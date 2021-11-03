@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/audioman_go/static/css/main.a617e044.chunk.css",
+    "main.js": "/audioman_go/static/js/main.1542f831.chunk.js",
+    "main.js.map": "/audioman_go/static/js/main.1542f831.chunk.js.map",
+    "runtime-main.js": "/audioman_go/static/js/runtime-main.56954307.js",
+    "runtime-main.js.map": "/audioman_go/static/js/runtime-main.56954307.js.map",
+    "static/js/2.ff231f72.chunk.js": "/audioman_go/static/js/2.ff231f72.chunk.js",
+    "static/js/2.ff231f72.chunk.js.map": "/audioman_go/static/js/2.ff231f72.chunk.js.map",
+    "static/js/3.10e5ae35.chunk.js": "/audioman_go/static/js/3.10e5ae35.chunk.js",
+    "static/js/3.10e5ae35.chunk.js.map": "/audioman_go/static/js/3.10e5ae35.chunk.js.map",
+    "index.html": "/audioman_go/index.html",
+    "static/css/main.a617e044.chunk.css.map": "/audioman_go/static/css/main.a617e044.chunk.css.map",
+    "static/js/2.ff231f72.chunk.js.LICENSE.txt": "/audioman_go/static/js/2.ff231f72.chunk.js.LICENSE.txt",
+    "static/media/logo.6ce24c58.svg": "/audioman_go/static/media/logo.6ce24c58.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.56954307.js",
+    "static/js/2.ff231f72.chunk.js",
+    "static/css/main.a617e044.chunk.css",
+    "static/js/main.1542f831.chunk.js"
+  ]
+}
