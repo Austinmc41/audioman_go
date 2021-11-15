@@ -1,5 +1,4 @@
-import panWads from './components/panWads'
-import Button from '/components/Button'
+import Button from './components/Button'
 
 const App = () => {
   return (
