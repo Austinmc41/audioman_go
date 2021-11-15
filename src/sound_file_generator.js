@@ -8,11 +8,12 @@ const writeFile = promisify(fs.writeFile)
 const output_file = 'object_sounds.js'
 
 const sounds_path = path.join(__dirname, 'sounds')
+path_too_sounds = 'sounds' // this is for rellitive imports to the object_sounds file when it is done
 
 async function importer(file_path, initial_text, folder_path){
 	//returns a string with import statements of the files
 	let text = ''
-	const import_string = `import ${initial_text}%name from './${folder_path}/%name%ending'`
+	const import_string = `import ${initial_text}%name from './${folder_path ? folder_path + '/' : ''}%name%ending'`
 	const files = await readdir(file_path)
 	files.forEach(file=>{
 		const split_text = file.split('.')
@@ -38,12 +39,11 @@ async function get_name_obj(file_path, initial_text){
 }
 
 async function main(){
-const contents = `
-//imports
-${await importer(sounds_path, 'sound_', 'sound')}
+const contents = `//sound imports
+${await importer(sounds_path, '', path_too_sounds)}
 
 //creating the objects
-const sounds = ${await get_name_obj(sounds_path, 'sounds_')}
+const sounds = ${await get_name_obj(sounds_path, '')}
 
 export { sounds }
 `
