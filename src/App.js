@@ -1,13 +1,13 @@
-import React, {Component} from "react"
 import panWads from './components/panWads'
-import Header from './components/Header'
+import Button from './components/Button'
 
-function App() {
+const App = () => {
   return (
-    <div className = 'container'><Header/>
+    <div className='container'>
+      <Button/>
     </div>
-  
-  );
+  )
 }
+
 
 export default App;
