@@ -1,0 +1,10 @@
+const Header = () => {
+    return  (
+        <div>
+            <h1>Button for sound</h1>
+            <button></button>
+        </div>
+    )
+}
+
+export default Header
