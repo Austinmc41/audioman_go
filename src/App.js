@@ -1,19 +1,11 @@
-import React from 'react'
+import Button from './components/Button'
 
-import { playSounds, getSoundNames } from './panWads.js'
-
-const Button = () => {
-    const handleClick = ()=>{
-        //some code here
-        playSounds()
-        alert("You clicked da button")
-       }
-
-    return  (
-        <div>
-            <button onClick={handleClick}>Click me!</button>
-        </div>
-    )
+const App = () => {
+  return (
+    <div className='container'>
+      <Button/>
+    </div>
+  )
 }
 
-export default Button 
+export default App 
