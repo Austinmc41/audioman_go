@@ -14,6 +14,9 @@ var count = notVisited.length;
 
 
 export function playSounds(numSounds){
+    if (numSounds > count) {
+        console.log('Refresh sounds: Currently available sound count is: ' + count);
+    }
     
     for (var i = 0; i < numSounds; i++) {   
         // Generate random index based on number of sounds to choose from
