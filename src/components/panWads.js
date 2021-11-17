@@ -13,31 +13,34 @@ var visitedSounds = [];
 var count = notVisited.length;
 
 
-export function playSounds(numSounds){
+export function checkNumSound(numSounds){
     if (numSounds > count) {
         console.log('Refresh sounds: Currently available sound count is: ' + count);
     }
-    
     for (var i = 0; i < numSounds; i++) {   
-        // Generate random index based on number of sounds to choose from
-        console.log(count)
-        const randIndex = Math.floor(Math.random() * count);
-        // use the random key to get the random sound
-        const randSound = notVisited[randIndex][1];
-        // creating sound 
-        const sound = new Wad({
-            source: randSound
-        })
-        // playing sound
-        sound.play()
-        // adding sound to visited sound
-        visitedSounds.push(notVisited[randIndex])
-        // deleting sound that was just played
-        notVisited.splice(randIndex, 1)
-        // setting count to new count
-        count = notVisited.length;
-    }    
+        setInterval(playSounds(numSounds), [3000]);
+    }
 }
+
+function playSounds(numSounds) {
+     // Generate random index based on number of sounds to choose from
+     console.log(numSounds)
+     const randIndex = Math.floor(Math.random() * count);
+     // access sound from array
+     const randSound = notVisited[randIndex][1];
+     // creating sound 
+     const sound = new Wad({
+         source: randSound
+     })
+     // playing sound
+     sound.play()
+     // adding sound to visited sound
+     visitedSounds.push(notVisited[randIndex])
+     // deleting sound that was just played
+     notVisited.splice(randIndex, 1)
+     // setting count to new count
+     count = notVisited.length;
+} 
 
 export function getSoundNames(){
     
@@ -48,4 +51,4 @@ export function refreshSounds(){
     notVisited = soundArray; 
 }
 
-playSounds(2);
+checkNumSound(2);
