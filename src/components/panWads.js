@@ -1,60 +1,48 @@
 import Wad from 'web-audio-daw';
 import {sounds} from '../object_sounds'
 
-
 // from https://stackoverflow.com/questions/4602141/variable-name-as-a-string-in-javascript
-
 const varToString = varObj => Object.keys(varObj)[0];
-
+// from  https://stackoverflow.com/questions/38824349/how-to-convert-an-object-to-an-array-of-key-value-pairs-in-javascript/50756887
+var soundArray = Object.keys(sounds).map((key) => [String(key), sounds[key]]);
 // initial list to randomly pick from (sounds will be removed from list each time one is played)
-var notVisited = sounds; 
-
+var notVisited = soundArray; 
 // list to add sounds that have already been played to
 var visitedSounds = [];
-
 // initial count 
-var count = Object.keys(notVisited).length;
+var count = notVisited.length;
 
 
-
-
-export function playSounds(){
-   
-    while (count !== 0) {
-        
-        // creating array of object keys for sounds to choose from
-        const keys = Object.keys(notVisited);
+export function playSounds(numSounds){
+    
+    for (var i = 0; i < numSounds; i++) {   
         // Generate random index based on number of sounds to choose from
-        const randIndex = Math.floor(Math.random() * keys.length);
-        // use random index to get key random key for random sound
-        const randKey = keys[randIndex];
-         // use the random key to get the random sound
-        const randSound = notVisited[randKey]
+        console.log(count)
+        const randIndex = Math.floor(Math.random() * count);
+        // use the random key to get the random sound
+        const randSound = notVisited[randIndex][1];
         // creating sound 
         const sound = new Wad({
             source: randSound
         })
         // playing sound
         sound.play()
-        // adding key to visited sound
-        visitedSounds.push(randKey)
-
+        // adding sound to visited sound
+        visitedSounds.push(notVisited[randIndex])
         // deleting sound that was just played
-        delete notVisited.randKey;
+        notVisited.splice(randIndex, 1)
         // setting count to new count
-        count = Object.keys(notVisited).length;
-
-    }
-
-    
-    
-
-   
-    
+        count = notVisited.length;
+    }    
 }
 
 export function getSoundNames(){
     
 }
 
-playSounds();
+export function refreshSounds(){
+    visitedSounds = [];
+    notVisited = soundArray; 
+}
+
+playSounds(2);
