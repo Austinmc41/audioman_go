@@ -17,8 +17,10 @@ export function checkNumSound(numSounds){
     if (numSounds > count) {
         console.log('Refresh sounds: Currently available sound count is: ' + count);
     }
+    let soundStartTime = 0;
     for (var i = 0; i < numSounds; i++) {   
-        setInterval(playSounds(numSounds), [3000]);
+        setTimeout(playSounds(numSounds), soundStartTime);
+        soundStartTime += 1;
     }
 }
 
