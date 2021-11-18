@@ -19,14 +19,13 @@ export function checkNumSound(numSounds){
     }
     let soundStartTime = 0;
     for (var i = 0; i < numSounds; i++) {   
-        setTimeout(playSounds(numSounds), soundStartTime);
+        setTimeout(playSounds, soundStartTime);
         soundStartTime += 300;
     }
 }
 
-function playSounds(numSounds) {
+function playSounds() {
      // Generate random index based on number of sounds to choose from
-     console.log(numSounds)
      const randIndex = Math.floor(Math.random() * count);
      // access sound from array
      const randSound = notVisited[randIndex][1];
@@ -53,4 +52,4 @@ export function refreshSounds(){
     notVisited = soundArray; 
 }
 
-checkNumSound(2);
+checkNumSound(3);
