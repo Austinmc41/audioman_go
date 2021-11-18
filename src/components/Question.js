@@ -12,10 +12,11 @@ class Question extends Component {
 	}
 
     render() {
+
         return (
             <div class="form-group">
-                <label for="exampleFormControlTextarea1">Example textarea</label>
-                <input class="form-control form-control-sm" type="text" placeholder=".form-control-sm"/>
+                <p>{this.props.label}</p>
+                <input class="form-control form-control-sm" type="text" placeholder=""/>
             </div>
         )
     }
