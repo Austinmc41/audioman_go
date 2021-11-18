@@ -9,7 +9,10 @@ import Button from './components/Button';
 import Form from './components/Form';
 
 import * as ROUTES from "./constants/routes";
-import Page1 from "./pages/page1";
+import HomePage from "./components/homePage";
+import SoundPage from "./components/soundPage";
+
+import passage1 from "./passages/passages.json"
 
 /*
 const App = () => {
@@ -28,9 +31,9 @@ class App extends React.Component {
       <Router basename='/'>
         <div className="App">
           <Routes>
-            <Route exact path={ROUTES.PAGE1} element={<Page1/>}/>
-            <Route exact path={ROUTES.PAGE2} />
-            <Route exact path={ROUTES.PAGE3}  />
+            <Route exact path={ROUTES.PAGE1} element={<HomePage/>}/>
+            <Route exact path={ROUTES.PAGE2} element={<SoundPage file={passage1}/>}/>
+            <Route exact path={ROUTES.PAGE3} />
             <Route exact path={ROUTES.PAGE4} />
           </Routes>
         </div>

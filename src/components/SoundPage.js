@@ -1,26 +1,23 @@
 import React, { Component } from 'react';
 
-import Button from '../components/Button';
-import Form from '../components/Form';
+import Button from './Button';
+import Question from './Question';
+import Form from './Form';
 
-class Page1 extends Component {
+class SoundPage extends Component {
     constructor(props){
 		super(props);
-		this.state = { 
-			type: '', 
-			label: '', 
-			choices: [], 
-		}
+		this.state = {}
 	}
 
     render() {
         return (
             <div className='container' style={{marginLeft: "40%"}}>
                 <Button/>
-                <Form/>
+                
             </div>
         )
     }
 }
 
-export default Page1;
+export default SoundPage;

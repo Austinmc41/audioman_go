@@ -1,0 +1,28 @@
+{
+    "passages": [
+        {
+            "passageName": "The Bald Eagle",
+            "passageText": "A bald eagle can have a wingspan of up to 8 feet and can live for over 25 years. Eagles make their nests at the tops of tall trees to keep their eggs safe. Their nests can be up to 9 feet wide. Baby eagles are called eaglets. When eaglets are about 12 weeks old, they learn to fly. They stay with their mother and father for about 8 more weeks as they learn to hunt. Eagles like to live near the water. A bald eagle can see a fish from up to a mile away. It can swoop down from the sky at 75 miles an hour and grab a fish right out of the water!",
+            "questions": [
+                {
+                    "question": "An eagle’s wingspan can be __________.",
+                    "choices": [
+                        "up to 4 feet",
+                        "up to 12 feet",
+                        "up to 8 feet"
+                    ],
+                    "answer": "up to 8 feet"
+                },
+                {
+                    "question": "Baby eagles are called _______________.",
+                    "choices": [
+                        "cubs",
+                        "eaglets",
+                        "kits"
+                    ],
+                    "answer": "eaglets"
+                }           
+            ]
+        }
+    ]
+}
