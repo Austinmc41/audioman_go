@@ -20,7 +20,7 @@ export function checkNumSound(numSounds){
     let soundStartTime = 0;
     for (var i = 0; i < numSounds; i++) {   
         setTimeout(playSounds(numSounds), soundStartTime);
-        soundStartTime += 1;
+        soundStartTime += 300;
     }
 }
 
