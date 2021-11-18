@@ -32,8 +32,8 @@ class App extends React.Component {
         <div className="App">
           <Routes>
             <Route exact path={ROUTES.PAGE1} element={<HomePage/>}/>
-            <Route exact path={ROUTES.PAGE2} element={<SoundPage/>}/>
-            <Route exact path={ROUTES.PAGE3} />
+            <Route exact path={ROUTES.PAGE2} element={<SoundPage nextPage={ROUTES.PAGE3}/>}/>
+            <Route exact path={ROUTES.PAGE3} element={<SoundPage nextPage={ROUTES.PAGE4}/>}/>
             <Route exact path={ROUTES.PAGE4} />
           </Routes>
         </div>
