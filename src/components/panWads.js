@@ -1,3 +1,4 @@
+import { Compressor } from 'tone';
 import Wad from 'web-audio-daw';
 import {sounds} from '../object_sounds'
 
@@ -16,6 +17,7 @@ var count = notVisited.length;
 export function checkNumSounds(numSounds){
     if (numSounds > count) {
         console.log('Refresh sounds: Currently available sound count is: ' + count);
+        return;
     }
     let soundStartTime = 0;
     for (var i = 0; i < numSounds; i++) {   
@@ -28,13 +30,14 @@ function playSound() {
      // Generate random index based on number of sounds to choose from
      const randIndex = Math.floor(Math.random() * count);
      // access sound from array
+     console.log(notVisited)
      const randSound = notVisited[randIndex][1];
      // creating sound 
      const sound = new Wad({
          source: randSound
      })
      // playing sound
-     sound.play()
+     sound.play();
      // adding sound to visited sound
      visitedSounds.push(notVisited[randIndex])
      // deleting sound that was just played
@@ -52,4 +55,4 @@ export function refreshSounds(){
     notVisited = soundArray; 
 }
 
-checkNumSounds(3);
+checkNumSounds(13);
