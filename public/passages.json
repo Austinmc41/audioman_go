@@ -2,7 +2,7 @@
     "passages": [
         {
             "passageName": "The Bald Eagle",
-            "passageText": "A bald eagle can have a wingspan of up to 8 feet and can live for over 25 years. Eagles make their nests at the tops of tall trees to keep their eggs safe. Their nests can be up to 9 feet wide. Baby eagles are called eaglets. When eaglets are about 12 weeks old, they learn to fly. They stay with their mother and father for about 8 more weeks as they learn to hunt. Eagles like to live near the water. A bald eagle can see a fish from up to a mile away. It can swoop down from the sky at 75 miles an hour and grab a fish right out of the water!",
+            "passage": "A bald eagle can have awingspan of up to 8 feet and can live for over 25 years. Eagles make their nests at the tops of tall trees to keep their eggs safe.   Their nests can be up to 9 feet wide.  Baby eagles are called eaglets.  When eaglets are about 12 weeks old, they learn to fly. They stay with their mother and father for about 8 more weeks as they learn to hunt.  Eagles like to live near the water.  A bald eagle can see a fish from up to a mile away.  It can swoop down from the sky at 75 miles an hour and grab a fish right out of the water!    ",
             "questions": [
                 {
                     "question": "An eagle’s wingspan can be __________.",
@@ -21,7 +21,823 @@
                         "kits"
                     ],
                     "answer": "eaglets"
-                }           
+                },
+                {
+                    "question": "Eagles make their nests _________________.",
+                    "choices": [
+                        "at the tops of tall trees",
+                        "after they have eaglets",
+                        "25 feet wide"
+                    ],
+                    "answer": "at the tops of tall trees"
+                },
+                {
+                    "question": "Eagles can live for over ______________.",
+                    "choices": [
+                        "80 years",
+                        "25 years",
+                        "100 years"
+                    ],
+                    "answer": "25 years"
+                }
+            ]
+        },
+        {
+            "passageName": "Otters",
+            "passage": "Otters spend most of their time in the water.  They have longflat tails and webbed feet that help them swim. It is fun to watch otters because they are very playful.  In the summer, they slide down banks of mud and splash into the water.  In the winter, they love to slide in the snow. Otters mostly eat fish.  They can also eat frogs, small snakes, birds and insects.An otter can hold its food in its paws and float on its back while it eats. It looks like the otter is using its belly as a table!                     ",
+            "questions": [
+                {
+                    "question": "Otters spend most of their time _______.",
+                    "choices": [
+                        "on land",
+                        "in the water",
+                        "eating rats and mice"
+                    ],
+                    "answer": "in the water"
+                },
+                {
+                    "question": "Otters eat mostly ______________.",
+                    "choices": [
+                        "crabs",
+                        "mice",
+                        "fish"
+                    ],
+                    "answer": "fish"
+                },
+                {
+                    "question": "Otters are very _______________.",
+                    "choices": [
+                        "playful",
+                        "mean",
+                        "little"
+                    ],
+                    "answer": "playful"
+                },
+                {
+                    "question": "An otter can use its belly like a __________.",
+                    "choices": [
+                        "chair",
+                        "bed",
+                        "table"
+                    ],
+                    "answer": "table"
+                }
+            ]
+        },
+        {
+            "passageName": "Skunks",
+            "passage": "Skunks  are mostly black with white stripes.  They are aboutas big as a cat. Skunks look for food at night.  They like to sleep in their dens during the day. Skunks can be helpful.  They can eat pesky insects, rats and mice.  It can be good to have skunks around. But, if you see a skunk lift its tail, back off!   A skunk can spray musk that hit something up to 12 feet away.   The smell is hard to get rid of.  It lasts for days and days.It is best to stand back while watching a skunk!                ",
+            "questions": [
+                {
+                    "question": "A skunk is about as big as ____________.",
+                    "choices": [
+                        "a cat",
+                        "a cow",
+                        "a pig"
+                    ],
+                    "answer": "a cat"
+                },
+                {
+                    "question": "Skunks look for food mostly _____________.",
+                    "choices": [
+                        "in the daytime",
+                        "in their den",
+                        "at night"
+                    ],
+                    "answer": "at night"
+                },
+                {
+                    "question": "A skunk can spray up to ____________.",
+                    "choices": [
+                        "20 feet",
+                        "12 feet",
+                        "40 feet"
+                    ],
+                    "answer": "12 feet"
+                },
+                {
+                    "question": "Skunks can eat ________________.",
+                    "choices": [
+                        "fish and clams",
+                        "rats and mice",
+                        "cats and dogs"
+                    ],
+                    "answer": "rats and mice"
+                }
+            ]
+        },
+        {
+            "passageName": "Time for School",
+            "passage": "Jill was sleeping in her bed When she heard a beep. The alarm told her There was no more time to sleep. Her mom made her breakfast,Eggs, jam and toast. That she likes the most. Jill brushed her teeth, Then washed her face. Soon the school bus Would get to her place.  She grabbed her backpack, And ran out the door. Right about four. ",
+            "questions": [
+                {
+                    "question": "Jill woke up because ________.",
+                    "choices": [
+                        "the sun was shining",
+                        "her mom told her to get up",
+                        "she heard the alarm"
+                    ],
+                    "answer": "she heard the alarm"
+                },
+                {
+                    "question": "What did Jill do just after she brushed her teeth?",
+                    "choices": [
+                        "She washed her face.",
+                        "She ate breakfast.",
+                        "She ran out the door."
+                    ],
+                    "answer": "She washed her face."
+                },
+                {
+                    "question": "What did Jill do just before she ran out the door?",
+                    "choices": [
+                        "She ate breakfast with her mom.",
+                        "She grabbed her backpack.",
+                        "She heard the alarm beep."
+                    ],
+                    "answer": "She grabbed her backpack."
+                },
+                {
+                    "question": "How will Jill most likely get to school?",
+                    "choices": [
+                        "She will walk to school.",
+                        "Her mom will take her in a van.",
+                        "She will ride the bus."
+                    ],
+                    "answer": "She will ride the bus."
+                }
+            ]
+        },
+        {
+            "passageName": "Sue's Painting",
+            "passage": "Sue had red, blue, yellow, and white paint. She wanted to paint a picture with purple and pink flowers for her mom.   Sue knew what to do.  She mixed some red paint and some blue paint to make purple.  To make pink, she added a little bit of white paint to some red paint.   Sue painted her flowers, then she wanted some nice green stems and leaves.  To make green, she mixed yellow and blue.  After she painted the leaves and stems, she added a bright yellow sun.Sue knew how to use a few colors to make the rest of the colors she wanted.  When her mom got home, Sue gave the painting ?Sue just smiled. ",
+            "questions": [
+                {
+                    "question": "Sue made purple by _______________________.",
+                    "choices": [
+                        "mixing yellow and green",
+                        "mixing red and white",
+                        "mixing blue and red"
+                    ],
+                    "answer": "mixing blue and red"
+                },
+                {
+                    "question": "Sue did not make ___________________________.",
+                    "choices": [
+                        "the red paint",
+                        "the green paint",
+                        "the pink paint"
+                    ],
+                    "answer": "the red paint"
+                },
+                {
+                    "question": "Just after Sue painted the flowers, she _________.",
+                    "choices": [
+                        "wanted green for the stems and leaves",
+                        "gave the picture to her mom",
+                        "mixed the red and white paint"
+                    ],
+                    "answer": "wanted green for the stems and leaves"
+                },
+                {
+                    "question": "Sue’s mom ___________________________.",
+                    "choices": [
+                        "showed Sue how to mix the colors",
+                        "asked Sue how she got pink and purple paint",
+                        "went to get pink and purple paint for Sue"
+                    ],
+                    "answer": "asked Sue how she got pink and purple paint"
+                }
+            ]
+        },
+        {
+            "passageName": "The Red Flower",
+            "passage": "Liz loved pink.  She had a pink coat and pink shoes.  Liz wanted some pink flowers. Her mom took her to the store to get some seeds to grow pink flowers. They put the seeds in a pot outside the door.  A bird came and sat in the pot.  The bird had some seeds in its beak. One seed fell into the pot. Liz and her mom watered the seeds. Little green plants began to grow. Soon, flowers grew on the plants. Liz looked at the flowers.  She saw three pink flowers and one red flower.  Liz said, pot?love my pink flowers and my red flower ",
+            "questions": [
+                {
+                    "question": "Why did Liz’s mom take her to the store?",
+                    "choices": [
+                        "to get pink shoes",
+                        "to get seeds for pink flowers",
+                        "to get seeds for red flowers"
+                    ],
+                    "answer": "to get seeds for pink flowers"
+                },
+                {
+                    "question": "Where did Liz and her mom put the pot?",
+                    "choices": [
+                        "in Liz’s room",
+                        "outside the door",
+                        "in the garden"
+                    ],
+                    "answer": "outside the door"
+                },
+                {
+                    "question": "How did the red flower most likely get in the pot?",
+                    "choices": [
+                        "Liz got the seed from the store.",
+                        "It grew from the seed the bird dropped.",
+                        "Liz’s mom put the seed for it in the pot."
+                    ],
+                    "answer": "It grew from the seed the bird dropped."
+                },
+                {
+                    "question": "How did Liz feel about the flowers?",
+                    "choices": [
+                        "She loved all the flowers.",
+                        "She did not like the red flower.",
+                        "She did not like the pink flowers."
+                    ],
+                    "answer": "She loved all the flowers."
+                }
+            ]
+        },
+        {
+            "passageName": "The Little Red Hen",
+            "passage": "A little red hen planted some seeds to grow wheat.  ?friends. The hen planted the seeds, all by herself.  When the wheat had grown, the hen asked the cat, the dog they all said and went off to nap in the sun.  The little red hen cut the wheat, all by herself.  She took one look at her sleepy friends and took the wheat to the mill to be made into flour, all by herself. The little red hen was ready to make some bread.  ?little red hen mixed the bread and then baked it, all by herself.The bread was ready.  The dog, the cat and the ?and happily ate the bread, all by herself.",
+            "questions": [
+                {
+                    "question": "The little red hen is _______________.",
+                    "choices": [
+                        "a hard worker",
+                        "very lazy",
+                        "sad all the time"
+                    ],
+                    "answer": "a hard worker"
+                },
+                {
+                    "question": "The dog is _________________.",
+                    "choices": [
+                        "a hard worker",
+                        "lazy",
+                        "very big"
+                    ],
+                    "answer": "lazy"
+                },
+                {
+                    "question": "After the hen mixed the bread, she ____________.",
+                    "choices": [
+                        "cut the wheat",
+                        "planted the seeds",
+                        "baked the bread"
+                    ],
+                    "answer": "baked the bread"
+                },
+                {
+                    "question": "The dog, cat and pig could learn ______________.",
+                    "choices": [
+                        "that the hen is very lazy",
+                        "to do their share of the work",
+                        "to wait for the hen to feed them"
+                    ],
+                    "answer": "to do their share of the work"
+                }
+            ]
+        },
+        {
+            "passageName": "Trees",
+            "passage": "Trees give us nice cool shade on hot days. We get wood from trees. People use wood to build houses.We also get food from trees.  Apples, pears and oranges all grow on trees.   Trees can be homes for birds, squirrels and other animals. All trees have roots.  The roots soak up water for the tree.  The trunk carries the water to the leaves.  Leaves need sunlight and water to make food for the tree.  As leaves make food for the tree, they make the air better for us too. We all need trees!",
+            "questions": [
+                {
+                    "question": "All trees have ____________.",
+                    "choices": [
+                        "apples",
+                        "roots",
+                        "pine cones"
+                    ],
+                    "answer": "roots"
+                },
+                {
+                    "question": "Trees give us ______________________.",
+                    "choices": [
+                        "shade, wood and food",
+                        "beans, peas and carrots",
+                        "pets"
+                    ],
+                    "answer": "shade, wood and food"
+                },
+                {
+                    "question": "Trees can be homes for _____________.",
+                    "choices": [
+                        "little boys",
+                        "birds and squirrels",
+                        "dogs and cats"
+                    ],
+                    "answer": "birds and squirrels"
+                },
+                {
+                    "question": "Leaves make ______________.",
+                    "choices": [
+                        "the air bad for us",
+                        "the air better for us",
+                        "water for us to drink"
+                    ],
+                    "answer": "the air better for us"
+                }
+            ]
+        },
+        {
+            "passageName": "King Penguins",
+            "passage": "King penguins are birds but they do not fly.  They are very good swimmers.  They use their wings as flippers as they swim.King penguins can walk on land and can hop from rock to rock.   They love to slide on their bellies on the ice and snow.  King penguins can dive up to 900 feet deep as they hunt for fish to eat.  Mother and father king penguins work together to take care of their babies. The mother lays an egg and then goes to find food.  The father keeps the egg warm by holding it on his feet under his belly.  When the mother comes back with food for the baby, the father goes out to sea to find food for himself.  ",
+            "questions": [
+                {
+                    "question": "King penguins cannot _______________________.",
+                    "choices": [
+                        "swim in the water",
+                        "hop from rock to rock",
+                        "fly to the sea"
+                    ],
+                    "answer": "fly to the sea"
+                },
+                {
+                    "question": "A king penguin keeps its egg warm by _________.",
+                    "choices": [
+                        "holding the egg on its feet under its belly",
+                        "putting the egg in the sun",
+                        "making a big nest"
+                    ],
+                    "answer": "holding the egg on its feet under its belly"
+                },
+                {
+                    "question": "Penguins use their wings _____________________.",
+                    "choices": [
+                        "to fly in the air",
+                        "to keep their eggs warm",
+                        "as flippers as they swim"
+                    ],
+                    "answer": "as flippers as they swim"
+                },
+                {
+                    "question": "King penguins eat ________________.",
+                    "choices": [
+                        "fish",
+                        "seals",
+                        "snakes"
+                    ],
+                    "answer": "fish"
+                }
+            ]
+        },
+        {
+            "passageName": "The Polar Bear",
+            "passage": "A  polar bear can be up to 9 feet tall and can weigh over 1,000 pounds.  Polar bears have thick white fur and a layer of fat to keep them warm.  They have pads on their feet to keep them from slipping on the ice.  Polar bears are very good swimmers.  They have webbed claws to help them swim.Polar bears hunt seals and fish.  In the summer, they also eat berries and plants.     Polar bears make dens in caves or in snow banks.  Baby bears are called cubs.  Cubs only weigh about one pound when they are born.  They stay with their mother for two years.   ",
+            "questions": [
+                {
+                    "question": "Polar bears have pads on their feet to ________.",
+                    "choices": [
+                        "keep them from slipping on the ice",
+                        "help them hide in the snow",
+                        "help them swim"
+                    ],
+                    "answer": "keep them from slipping on the ice"
+                },
+                {
+                    "question": "Polar bears hunt for ______________.",
+                    "choices": [
+                        "brown bears",
+                        "seals and fish",
+                        "penguins and rabbits"
+                    ],
+                    "answer": "seals and fish"
+                },
+                {
+                    "question": "Polar bears have a layer of fat to __________.",
+                    "choices": [
+                        "keep them warm",
+                        "help them hunt",
+                        "make them white"
+                    ],
+                    "answer": "keep them warm"
+                },
+                {
+                    "question": "Baby polar bears ___________________.",
+                    "choices": [
+                        "stay with their mother for five years",
+                        "are brown",
+                        "are called cubs"
+                    ],
+                    "answer": "are called cubs"
+                }
+            ]
+        },
+        {
+            "passageName": "Measuring with Paper Clips",
+            "passage": "I measured my sneaker with paper clips.  My sneaker is about 11 paper clips long. I measured my book with paper clips too.  My book is about 13 paper clips long.  I measured my friend with paper clips.   It was tricky.  I needed 57 paper clips to measure my friend. We wanted to measure our classroom with paper clips. paper clips! ",
+            "questions": [
+                {
+                    "question": "The sneaker is about ________________.",
+                    "choices": [
+                        "11 paper clips long",
+                        "57 paper clips long",
+                        "13 paper clips long"
+                    ],
+                    "answer": "11 paper clips long"
+                },
+                {
+                    "question": "The ____________ is about 13 paper clips long.",
+                    "choices": [
+                        "classroom",
+                        "book",
+                        "sneaker"
+                    ],
+                    "answer": "book"
+                },
+                {
+                    "question": "The _____________ is not as long as the book.",
+                    "choices": [
+                        "classroom",
+                        "friend",
+                        "sneaker"
+                    ],
+                    "answer": "sneaker"
+                },
+                {
+                    "question": "They did not measure the _______________.",
+                    "choices": [
+                        "book",
+                        "classroom",
+                        "sneaker"
+                    ],
+                    "answer": "classroom"
+                }
+            ]
+        },
+        {
+            "passageName": "The Orca",
+            "passage": "An orca is black and white.  It can fin can be 6 feet tall.  Orcas are large dolphins, but they are often A baby orca is called a calf. Orcas take good care of their babies. As soon as a calf is born, its mother pushes it up to get some air.   A group of orcas is called a pod.   The pod looks for fish to eat.  One orca can eat over 100 pounds of food in a day. Orcas are sometimes called “wolves of the sea” because they hunt in packs like wolves.",
+            "questions": [
+                {
+                    "question": "How long can orcas be?",
+                    "choices": [
+                        "up to 30 feet long",
+                        "up to 300 feet long",
+                        "about 6 feet long"
+                    ],
+                    "answer": "up to 30 feet long"
+                },
+                {
+                    "question": "Why are orcas sometimes called wolves of the sea?",
+                    "choices": [
+                        "Orcas can make a sound like a wolf.",
+                        "Orcas hunt in packs like wolves do.",
+                        "Orcas and wolves are both big."
+                    ],
+                    "answer": "Orcas hunt in packs like wolves do."
+                },
+                {
+                    "question": "What is a baby orca called?",
+                    "choices": [
+                        "a little wolf",
+                        "a calf",
+                        "a pod"
+                    ],
+                    "answer": "a calf"
+                },
+                {
+                    "question": "What does a mother orca do right after a calf is born?",
+                    "choices": [
+                        "The mother pushes the calf up to get air.",
+                        "The mother teaches the calf to howl.",
+                        "The mother gets fish for the calf to eat."
+                    ],
+                    "answer": "The mother pushes the calf up to get air."
+                }
+            ]
+        },
+        {
+            "passageName": "The Water Cycle",
+            "passage": "After it rains, the grass outside is wet.  But, it will not always be wet.  Heat from the sun will dry the grass.  Did you ever wonder where the water goes?The heat from the sun turns the water into water vapor.  Water vapor rises into the air.  Most of the Sometimes, when there is a lot of vapor, we can see mist or fog.  Clouds are made of water vapor.  As more and more water vapor rises into the air, the clouds get bigger and bigger. Big, dark clouds are full of water vapor.  All of a sudden, the water vapor begins to change back into water.  It is raining!  The water cycle is complete. Water is amazing! Fun Facts: When we see steam coming from a pan as we boil water, we are seeing water vapor.  When we use a dryer to dry our clothes, the water in the clothes is turned into water vapor and goes outside through the vent.   ",
+            "questions": [
+                {
+                    "question": "As the sun dries the rain up, it turns into _________.",
+                    "choices": [
+                        "steam",
+                        "water vapor",
+                        "snow"
+                    ],
+                    "answer": "water vapor"
+                },
+                {
+                    "question": "Clouds are made of _______________________.",
+                    "choices": [
+                        "water vapor",
+                        "steam",
+                        "the sky"
+                    ],
+                    "answer": "water vapor"
+                },
+                {
+                    "question": "We can see water vapor when ________________.",
+                    "choices": [
+                        "steam rises from a pan of boiling water",
+                        "we look at water in the sink",
+                        "we wash our hands"
+                    ],
+                    "answer": "steam rises from a pan of boiling water"
+                },
+                {
+                    "question": "The author wrote this article to _________________.",
+                    "choices": [
+                        "make us laugh",
+                        "teach us how to make rain",
+                        "help us learn about the water cycle"
+                    ],
+                    "answer": "help us learn about the water cycle"
+                }
+            ]
+        },
+        {
+            "passageName": "The Zebra and the Ostrich \n",
+            "passage": "Animals can help each other.  They can work together as partners to get what they need.  Zebras live in Africa. A zebra looks like a horse with black and white stripes. A zebra can hear very well.  It can hear predators coming from far away. The ostrich is a large bird that also lives on the plains of Africa.  Ostriches have very good eyesight.  An ostrich can see danger far in the distance.  Ostriches and zebras often graze together in groups.  The zebras warn the ostriches when they hear danger, and the ostriches warn the zebras when they see danger.  They help keep each other safe!",
+            "questions": [
+                {
+                    "question": "A zebra can __________________________.",
+                    "choices": [
+                        "see very well",
+                        "hear very well",
+                        "have black and orange stripes"
+                    ],
+                    "answer": "hear very well"
+                },
+                {
+                    "question": "An ostrich can ________________________.",
+                    "choices": [
+                        "see very well",
+                        "hear very well",
+                        "have black and white stripes"
+                    ],
+                    "answer": "see very well"
+                },
+                {
+                    "question": "The ostrich and zebra ______________________.",
+                    "choices": [
+                        "do not like to share food",
+                        "help keep each other safe",
+                        "both look like horses"
+                    ],
+                    "answer": "help keep each other safe"
+                },
+                {
+                    "question": "This story is mostly about ___________________.",
+                    "choices": [
+                        "all the animals that live in Africa",
+                        "why a zebra is better than an ostrich",
+                        "how two animals help each other"
+                    ],
+                    "answer": "how two animals help each other"
+                }
+            ]
+        },
+        {
+            "passageName": "The Colors of the Sky",
+            "passage": "Some questions seem simple until you stop and think about them.  One of these questions is, ?At times, the sky looks blue.  Fluffy white clouds can form in the sky, making the sky blue and white.  Before it rains, the clouds can get dark and heavy.  The sky can look gray.  As the sun shines after it rains, a rainbow can form.   Each evening, the sun sets.  As the sun sets, it can make the sky look orange, pink or even purple.  At night, the sky looks black except for the stars and the moon.  ?question, until you stop and think about it.  Can you think of another question that seems simple until you stop and think about it?",
+            "questions": [
+                {
+                    "question": "A rainbow can form ______________________.",
+                    "choices": [
+                        "only in the morning",
+                        "after it rains",
+                        "after the sun sets"
+                    ],
+                    "answer": "after it rains"
+                },
+                {
+                    "question": "The sky can look orange or purple ____________.",
+                    "choices": [
+                        "when it snows",
+                        "when it is about to rain",
+                        "as the sun sets"
+                    ],
+                    "answer": "as the sun sets"
+                },
+                {
+                    "question": "Before it rains ________________________.",
+                    "choices": [
+                        "we can see a rainbow in the sky",
+                        "dark clouds can make the sky look gray",
+                        "the sky should be bright blue"
+                    ],
+                    "answer": "dark clouds can make the sky look gray"
+                },
+                {
+                    "question": "The author wants us to think of _________________.",
+                    "choices": [
+                        "one simple answer to each question",
+                        "a time the sky can look yellow",
+                        "a question that is not as simple as it seems"
+                    ],
+                    "answer": "a question that is not as simple as it seems"
+                }
+            ]
+        },
+        {
+            "passageName": "A Visit to the Water Park",
+            "passage": "There is a new water park in town. We go there on the first day of summer. It has pools and water slides. There are sprinklers too. The slides are scary at first. After the first ride, we love the water slides. The sprinklers are cool on hot days. One of the pools makes its own waves. All the kids try to surf the waves. It is really fun. The water park can be very crowded. There are many kids and adults, but they do not allow pets. We really like the ice cream at the snack bar. They also sell pop and donuts. We all love the new water park.",
+            "questions": [
+                {
+                    "question": "What is new in town?",
+                    "choices": [
+                        "Playground",
+                        "Water Park",
+                        "Swimming Pool"
+                    ],
+                    "answer": "Water Park"
+                },
+                {
+                    "question": "What is scary at first?",
+                    "choices": [
+                        "The Slides",
+                        "The Ladders",
+                        "The Waves"
+                    ],
+                    "answer": "The Slides"
+                },
+                {
+                    "question": "What is cool on a hot day?",
+                    "choices": [
+                        "The umbrellas",
+                        "The sprinklers",
+                        "The water slides"
+                    ],
+                    "answer": "The sprinklers"
+                },
+                {
+                    "question": "What do they love at the snack bar?",
+                    "choices": [
+                        "The nachos",
+                        "The cookies",
+                        "The ice cream"
+                    ],
+                    "answer": "The ice cream"
+                }
+            ]
+        },
+        {
+            "passageName": "A Puzzle a Day",
+            "passage": "Anna and her family love doing puzzles. Anna is best at little puzzles. Anna and her brother work on medium size puzzles together. Anna’s brother likes puzzles with cars in them. When the whole family does a puzzle, they do really big puzzles. It can take them a week to finish a really big puzzle. Last year they did a puzzle with 500 pieces! Anna tries to finish one small puzzle a day by herself. Her puzzles have about 50 pieces. They all glue their favorite puzzles together and frame them. The puzzles look so nice on the wall.",
+            "questions": [
+                {
+                    "question": "What puzzles is Anna best at?",
+                    "choices": [
+                        "Little puzzles",
+                        "Large puzzles",
+                        "Medium puzzles"
+                    ],
+                    "answer": "Little puzzles"
+                },
+                {
+                    "question": "What puzzles does she do with her brother?",
+                    "choices": [
+                        "Little puzzles",
+                        "Large puzzles",
+                        "Medium puzzles"
+                    ],
+                    "answer": "Medium puzzles"
+                },
+                {
+                    "question": "How long does it take her family to finish a really big puzzle?",
+                    "choices": [
+                        "1 week",
+                        "1 month",
+                        "3 weeks"
+                    ],
+                    "answer": "1 week"
+                },
+                {
+                    "question": "What do they do with their favorite puzzles?",
+                    "choices": [
+                        "Throw them away",
+                        "Glue them together and frame them",
+                        "Take a picture of them"
+                    ],
+                    "answer": "Glue them together and frame them"
+                }
+            ]
+        },
+        {
+            "passageName": "Apples",
+            "passage": "Do you like apples? Apples can be red, yellow, or green. Each color tastes different. They are fruit. You can make apples into treats. Apples grow on trees. They finish growing in the fall. Then you can pick them to eat. When you pick an apple, you twist it and then pull it off the tree. There are five parts of an apple. The outside is the skin. The inside is the flesh. There are seeds inside of the apple. The stem is on top. Some apples have leaves by the stem. What else do you know about apples?",
+            "questions": [
+                {
+                    "question": "When do apples finish growing?",
+                    "choices": [
+                        "In the Spring",
+                        "In the Fall",
+                        "In the Winter"
+                    ],
+                    "answer": "In the Fall"
+                },
+                {
+                    "question": "What is this passage about?",
+                    "choices": [
+                        "The passage is about how to cook apples",
+                        "The passage is about how good apples are for your health",
+                        "The passage is about how apples grow and the parts of the apple"
+                    ],
+                    "answer": "The passage is about how apples grow and the parts of the apple"
+                },
+                {
+                    "question": "How many parts does an apple have?",
+                    "choices": [
+                        "7 parts",
+                        "3 parts",
+                        "5 parts"
+                    ],
+                    "answer": "5 parts"
+                },
+                {
+                    "question": "How do you pick apples?",
+                    "choices": [
+                        "You gently tug the apples",
+                        "You only twist the apples",
+                        "You twist the apples and pull them off the trees"
+                    ],
+                    "answer": "You twist the apples and pull them off the trees"
+                }
+            ]
+        },
+        {
+            "passageName": "How to Tie Your Shoes",
+            "passage": "First, make an “X” with the laces. Take the bottom lace and put it in the space between the shoe and the middle of the “X”. Pull the ends of both laces tight. Next, make a loop with each lace. Make an “X” with both loops. Take the bottom loop and put it in the space between the shoe and the middle of the “X”. Pull both loops tight. Last, do the steps again with the laces on your other shoe. Pat yourself on the back. You tied your shoes! It will take you a few times to get it right. Keep on practicing",
+            "questions": [
+                {
+                    "question": "What materials do you need to tie your shoes?",
+                    "choices": [
+                        "Leather",
+                        "Laces",
+                        "Cardboard"
+                    ],
+                    "answer": "Laces"
+                },
+                {
+                    "question": "What do you do first?",
+                    "choices": [
+                        "Make an X with the laces",
+                        "Tuck the laces into the shoe",
+                        "Take out the laces"
+                    ],
+                    "answer": "Make an X with the laces"
+                },
+                {
+                    "question": "Will it be easy for everyone to tie their shoes?",
+                    "choices": [
+                        "Yes, it will be very easy",
+                        "No, it will take practice",
+                        "No, you will never be able to tie your shoes"
+                    ],
+                    "answer": "No, it will take practice"
+                },
+                {
+                    "question": "How will you feel when you tie your shoes for the first time?",
+                    "choices": [
+                        "Proud",
+                        "Dissapointed",
+                        "Confused"
+                    ],
+                    "answer": "Proud"
+                }
+            ]
+        },
+        {
+            "passageName": "Shoveling Snow",
+            "passage": "I want a new toy. Mom says toys cost money. How can I get money? I look outside. There is a lot of snow! Mom says I can earn money if I shovel our driveway. I do. It is fun! I do not have enough money for my new toy. I look around. Mrs. Jen has a shovel. Can I shovel her driveway? She says yes! I almost have enough money for my new toy. Mr. Tom has a shovel. Can I shovel his driveway? He says yes! I can get my new toy!",
+            "questions": [
+                {
+                    "question": "Who are the characters?",
+                    "choices": [
+                        "Child, Mom, Mrs.Jen and Mr.Tom",
+                        "Mr.Tom, Father, Child, Mrs.Jen",
+                        "Mr.Jason, Father, Child, Mrs.Jen"
+                    ],
+                    "answer": "Child, Mom, Mrs.Jen and Mr.Tom"
+                },
+                {
+                    "question": "Where is the setting?",
+                    "choices": [
+                        "At the playground",
+                        "The driveways of mom, Mrs.Jen and Mr.Tom",
+                        "The house of mom, Mrs.Jen and Mr.Tom"
+                    ],
+                    "answer": "The driveways of mom, Mrs.Jen and Mr.Tom"
+                },
+                {
+                    "question": "What is the problem?",
+                    "choices": [
+                        "The child is lazy at his house",
+                        "The child has money, but has no toy to buy",
+                        "The child has a toy, but has no money to buy the toy"
+                    ],
+                    "answer": "The child has a toy, but has no money to buy the toy"
+                },
+                {
+                    "question": "How does he solve the problem?",
+                    "choices": [
+                        "The child shovels his/her mom's, Mrs.Jen, and Mr.Tom's driveway so he/she can play at the playground later",
+                        "The child shovels his/her mom's, Mrs.Jen, and Mr.Tom's driveway to earn money",
+                        "The child goes to the store to get a toy"
+                    ],
+                    "answer": "The child shovels his/her mom's, Mrs.Jen, and Mr.Tom's driveway to earn money"
+                }
             ]
         }
     ]

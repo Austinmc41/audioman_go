@@ -8,22 +8,8 @@ import Form from './Form';
 class SoundPage extends Component {
     constructor(props){
 		super(props);
-		this.state = {
-            data: ''
-        }
+		this.state = {}
 	}
-
-    componentDidMount() {
-        fetch("/passages.json", { 
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            }
-           }).then(res => res.json()).then(x => {
-          this.setState({ data: x });
-        });
-        
-    }
 
     render() {
         return (

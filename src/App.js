@@ -9,32 +9,40 @@ import Button from './components/Button';
 import Form from './components/Form';
 
 import * as ROUTES from "./constants/routes";
+import nextPages from './constants/nextPages';
 import HomePage from "./components/HomePage";
 import SoundPage from "./components/SoundPage";
 
-//import passage1 from "./passages/passages.json"
-
-/*
-const App = () => {
-  return (
-    <div className='container' style={{marginLeft: "40%"}}>
-      <Button/>
-      <Form/>
-    </div>
-  )
-}
-*/
 
 class App extends React.Component {
+  constructor(){
+		super();
+		this.state = {
+      data: null
+    }
+	}
+
+  componentDidMount() {
+    fetch("/passages.json", { 
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        }
+       }).then(res => res.json()).then(x => {
+      this.setState({ data: x });
+      //console.log(this.state.data);
+    });  
+  }
+
   render() {
     return (
       <Router basename='/'>
         <div className="App">
           <Routes>
             <Route exact path={ROUTES.PAGE1} element={<HomePage/>}/>
-            <Route exact path={ROUTES.PAGE2} element={<SoundPage nextPage={ROUTES.PAGE3}/>}/>
-            <Route exact path={ROUTES.PAGE3} element={<SoundPage nextPage={ROUTES.PAGE4}/>}/>
-            <Route exact path={ROUTES.PAGE4} />
+            {Object.entries(nextPages).map(([key, value]) => (
+              <Route exact path={key} element={<SoundPage nextPage={value}/>}/>
+            ))}
           </Routes>
         </div>
       </Router>
