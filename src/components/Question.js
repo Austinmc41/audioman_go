@@ -18,6 +18,7 @@ class Question extends Component {
                     <p>{this.props.label}</p>
                     <input class="form-control" type={this.props.type} placeholder=""/>
                     <br></br>
+                    <br></br>
                 </div>
             )
         } else if (this.props.type === "radio") {

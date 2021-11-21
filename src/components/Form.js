@@ -12,12 +12,9 @@ class Form extends Component {
     render() {
         return (
             <form class="center">
-                <Question type="text" label="Age" choices={[]}/>
-                <Question type="text" label="Gender" choices={[]}/>
-                <Question type="radio" label="Race" choices={["White", "Hispanic or Latino", "Black or African American", "Native American or American Indian", "Asian/Pacific Islander", "Other"]}/>
-                <Question type="text" label="Musical Ability" choices={[]}/>
-                <Question type="text" label="Anxiety Level on Tests" choices={[]}/>
-                <Question type="text" label="Hearing Level" choices={[]}/>
+                {this.props.questions.map((item, index) => (
+                    <Question type={item["type"]} label={item["label"]} choices={item["choices"]}/>
+                ))}
             </form>
         )
     }
