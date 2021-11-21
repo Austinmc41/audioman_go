@@ -1,11 +1,12 @@
 import React from 'react'
 
-import { playSound, getSoundNames, checkNumSounds } from './panWads.js'
+import { playSound, getSoundNames, checkNumSounds, semiCircle } from './panWads.js'
 
 const Button = () => {
     const handleClick = ()=>{
         //some code here
-        checkNumSounds()
+        //
+        checkNumSounds();
         alert("You clicked da button")
        }
 
