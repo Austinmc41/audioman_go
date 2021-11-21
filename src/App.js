@@ -29,19 +29,21 @@ class App extends React.Component {
             'Accept': 'application/json'
         }
        }).then(res => res.json()).then(x => {
-      this.setState({ data: x });
-      //console.log(this.state.data);
+      this.setState({ data: x["passages"] });
     });  
   }
 
   render() {
+    if (!this.state.data) return "Loading...";
+
+    var i = 0;
     return (
       <Router basename='/'>
         <div className="App">
           <Routes>
             <Route exact path={ROUTES.PAGE1} element={<HomePage/>}/>
             {Object.entries(nextPages).map(([key, value]) => (
-              <Route exact path={key} element={<SoundPage nextPage={value}/>}/>
+              <Route exact path={key} element={<SoundPage nextPage={value} data={this.state.data[i++]}/>}/>
             ))}
           </Routes>
         </div>
