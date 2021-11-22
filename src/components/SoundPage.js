@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import Button from './Button';
 import Question from './Question';
 import Form from './Form';
+import NasaTLXForm from './NasaTLXForm';
 
 class SoundPage extends Component {
     constructor(props){
@@ -26,6 +27,8 @@ class SoundPage extends Component {
                 <p>{this.props.data["passage"]}</p>
                 <br></br>
                 <Form questions={questions}/>
+                <br></br>
+                <NasaTLXForm></NasaTLXForm>
                 {(this.props.nextPage) &&
                     <NavLink exact activeClassName="active" to={this.props.nextPage}>Next Page</NavLink>
                 }  
