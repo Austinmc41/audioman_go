@@ -21,10 +21,11 @@ class SoundPage extends Component {
         
         if (!questions) return "Loading...";
         return (
-            <div className='container' style={{marginLeft: "40%"}}>
+            <div className='container' style={{marginLeft: "30%"}}>
                 <Button/>
-                <p>{this.props.data["passageName"]}</p>
-                <p>{this.props.data["passage"]}</p>
+                <br></br>
+                <strong>{this.props.data["passageName"]}</strong>
+                <p style={{width: "50%"}}>{this.props.data["passage"]}</p>
                 <br></br>
                 <Form questions={questions}/>
                 <br></br>

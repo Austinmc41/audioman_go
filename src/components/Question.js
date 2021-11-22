@@ -14,7 +14,7 @@ class Question extends Component {
     render() {
         if (this.props.type === "text") {
             return (
-                <div class="form-group">
+                <div class="form-group col-md-6">
                     <p>{this.props.label}</p>
                     <input class="form-control" type={this.props.type} placeholder=""/>
                     <br></br>

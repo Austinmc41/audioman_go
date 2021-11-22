@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Slider from 'bootstrap-slider';
 import ReactBootstrapSlider from 'react-bootstrap-slider';
+import $ from 'jquery';
 
 import Question from './Question';
 import categories from '../constants/NasaTLX';
@@ -45,6 +46,10 @@ class NasaTLXForm extends Component {
                                 min={0}
                                 orientation="horizontal"
                                 reversed={false}
+                                ticks={[0, 25, 50, 75, 100]}
+                                ticks_positions={[0, 25, 50, 75, 100]}
+                                ticks_labels={['0', '25', '50', '75', '100']}
+                                ticks_snap_bounds={0}
                             />
                         </div>
                         <br></br>

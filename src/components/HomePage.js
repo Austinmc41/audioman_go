@@ -15,8 +15,9 @@ class HomePage extends Component {
 
     render() {
         return (
-            <div className='container' style={{marginLeft: "40%"}}>
+            <div className='container' style={{marginLeft: "30%"}}>
                 <Button/>
+                <br></br>
                 <Form questions={demographics}/>
                 <br></br>
                 <NavLink exact activeClassName="active" to={ROUTES.PAGE2}>Next Page</NavLink>
