@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLongArrowAltRight } from "@fortawesome/free-solid-svg-icons";
+
 import Button from './Button';
 import Form from './Form';
 import * as ROUTES from "../constants/routes";
@@ -15,12 +18,22 @@ class HomePage extends Component {
 
     render() {
         return (
-            <div className='container' style={{marginLeft: "30%"}}>
-                <Button/>
+            <div>
+                <div className='container' style={{marginLeft: "30%"}}>
+                    <Button/>
+                    <br></br>
+                    <Form questions={demographics}/>
+                    <br></br>
+                </div>
+                <div className="container" style={{marginLeft: "65%"}}>
+                    <NavLink exact activeClassName="active" to={ROUTES.PAGE2}>
+                        <FontAwesomeIcon icon={faLongArrowAltRight} size="4x"/>
+                    </NavLink>
+                </div>
                 <br></br>
-                <Form questions={demographics}/>
                 <br></br>
-                <NavLink exact activeClassName="active" to={ROUTES.PAGE2}>Next Page</NavLink>
+                <br></br>
+                <br></br> 
             </div>
         )
     }
