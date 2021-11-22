@@ -23,11 +23,11 @@ class Question extends Component {
             )
         } else if (this.props.type === "radio") {
             return (
-                <div class="form-check">
+                <div>
                     <p>{this.props.label}</p>
                     {this.props.choices.map((item, index) => (
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name={item} id={item} value={item}/>
+                            <input class="form-check-input" type={"radio"} name={this.props.label} id={item} value={item} />
                             <label class="form-check-label" for={item}>
                                 {item}
                             </label>
