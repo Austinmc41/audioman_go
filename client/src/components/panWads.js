@@ -13,13 +13,16 @@ var notVisited = soundArray;
 var visitedSounds = [];
 // initial count 
 var count = notVisited.length;
-// var panList = [[,,],[,,],[,,],[,,],[,,],[,,],[,,],[,,],[,,],[,,],[,,],[,,],[,,],[,,],[,,],[,,],[,,],[,,],[,,],[,,]]
+//preprocessed list for spatial audio 
+var semiCircle = [[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]]
 
 // positions available for sounds to be played 
 var positionLeft = [];
 
 // positions where sounds have already been played
 var positionGone = [];
+
+setSemiCircle();
 
 export function checkNumSounds(numSounds){
     if (numSounds > count) {
@@ -34,6 +37,15 @@ export function checkNumSounds(numSounds){
 }
 
 function playSound() {
+
+    
+
+    // @todo pull random position from semicircle and use for
+    //  panning in WAD creation 
+    const panPosit = Math.floor(Math.random() * semiCircle.length)
+
+    const spatialCoord = semiCircle[panPosit]; 
+    console.log(spatialCoord)
      // Generate random index based on number of sounds to choose from
      const randIndex = Math.floor(Math.random() * count);
      // access sound from array
@@ -41,8 +53,10 @@ function playSound() {
      const randSound = notVisited[randIndex][1];
      // creating sound 
      const sound = new Wad({
-         source: randSound
-     })
+        source: randSound,
+        panning: spatialCoord,
+        panningModel: 'HRTF',
+        rolloffFactor: 1 })
      // playing sound
      sound.play();
      // adding sound to visited sound
@@ -53,67 +67,6 @@ function playSound() {
      count = notVisited.length;
 } 
 
-export function semiCircle() {
-
-
-    // setting center 
-    var center = [0,0];
-    // setting radius
-    var radius = 20000;
-    // setting 40 steps so that half will equal 20
-    var options = {steps: 40}
-    // create  cirlce 
-    var circle = turf.circle(center, radius, options);
-    // get coords 
-    var coords = turf.coordAll(circle);
-    // keeping count of number of coordinates
-    var coordCount = 0;
-
-    var semiCircle = [];
-
-  
-
-    // pushing elements in 1 and 2 quadrant into semicircle list
-    turf.coordEach(circle, function(currentCoord)  {
-        if ((currentCoord[0] <= 0 && currentCoord[1] >=0) 
-            || (currentCoord[0] >= 0 && currentCoord[1] >=0)){
-        currentCoord.splice(1,0,0);
-        semiCircle.push(currentCoord);
-        console.log(currentCoord);
-        coordCount++;
-        }
-    })
-    // printing out semiCircle
-    console.log(semiCircle);
-    console.log(coordCount)
-    // console.log(circle); 
-    // console.log(coords);
-
-    // @todo pull random position from semicircle and use for
-    //  panning in WAD creation 
-
-     // Generate random index based on number of sounds to choose from
-     const randIndex = Math.floor(Math.random() * count);
-     // access sound from array
-     console.log(notVisited)
-     const randSound = notVisited[randIndex][1];
-     // creating sound 
-     const sound = new Wad({
-         source: randSound,
-         panning: [0,5, 340],
-         panningModel: 'HRTF',
-         rolloffFactor: 1 })
-     // playing sound
-     sound.play();
-     // adding sound to visited sound
-     visitedSounds.push(notVisited[randIndex])
-     // deleting sound that was just played
-     notVisited.splice(randIndex, 1)
-     // setting count to new count
-     count = notVisited.length;
-
-}
-
 export function getSoundNames(){
     
 }
@@ -123,5 +76,15 @@ export function refreshSounds(){
     notVisited = soundArray; 
 }
 
-// checkNumSounds(13);
-semiCircle();
+export function setSemiCircle() {
+    var r = 50;
+    var step = Math.PI/20; 
+    for (var i = 0; i < 20; i++) {
+        var x = r*Math.cos(step*i);
+        semiCircle[i][0] = x;
+        var y = r * Math.sin(step*i);
+        semiCircle[i][2] = y;
+    }
+}
+
+checkNumSounds(13)

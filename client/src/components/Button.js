@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { playSound, getSoundNames, checkNumSounds, semiCircle } from './panWads.js'
+import {playSound, getSoundNames, checkNumSounds } from './panWads.js'
 
 const Button = () => {
     const handleClick = ()=>{
