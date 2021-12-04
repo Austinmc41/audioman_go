@@ -41,70 +41,28 @@ class SoundPage extends Component {
     handleClick = (e) => {
         var userAnswers = [];
         $(".question").each(function(index) {
-            console.log($(this).find('input:radio:checked').val());
             userAnswers.push($(this).find('input:radio:checked').val());
         });
-        console.log(this.props.nextPage.substring(5) - 1);
-        console.log(this.props.idProp);
         var page = this.props.nextPage.substring(5) - 2;
-        /*
-        for (var i = 0; i < categories.length; i++) {
-            //console.log('.'.concat(categories[i]['attribute']))
-            //console.log($('.'.concat(categories[i]['attribute'])).value);
-            //console.log(this.state.categories[i]['attribute']);
-        }*/
 
         var result = {};
-
         for (var i = 0; i < userAnswers.length; i++) {
             result["page" + page + "_question" + (i+1).toString()] = userAnswers[i];
         }
+        for (var j = 0; j < categories.length; j++) {
+            result["page" + page + "_" + categories[j]["attribute"]] = $("#" + categories[j]["attribute"]).children()[1].value;
+        }
 
-        /*
-        var records;
-        axios
-            .get("http://localhost:5000/record", result)
-            .then((res) => {
-                var hasID = false;
-                for (var j = 0; j < res.data.length; j++) {
-                    if (res.data[j]["ID"] === this.props.idProp) {
-                        //hasID = true;
-                        result["_id"] = res.data[j]["_id"];
-                        axios
-                            .post("http://localhost:5000/record/update/:id", result)
-                            .then((res) => console.log(res.data));
-                        break
-                    }
-                }
-            });
-        */
-
-        //console.log(records);
-        
-        const newperson = {
-            person_name: "1",
-            person_position: "2",
-            person_level: "3"
-        };
-
-        console.log(page);
         if (page === 1) {
             result["_id"] = this.props.idProp;
             axios
                 .post("http://localhost:5000/record/add", result)
                 .then((res) => console.log(res.data));
         } else {
-            //result["id"] = this.props.idProp;
             axios
                 .post("http://localhost:5000/update/" + this.props.idProp, result)
                 .then((res) => console.log(res.data));
         }
-      
-        /*
-        axios
-            .post("http://localhost:5000/record/add", result)
-            .then((res) => console.log(res.data));
-        */
     }
 
     render() {
