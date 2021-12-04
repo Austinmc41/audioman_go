@@ -14,7 +14,7 @@ class Question extends Component {
     render() {
         if (this.props.type === "text") {
             return (
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-6 question">
                     <p>{this.props.label}</p>
                     <input class="form-control" type={this.props.type} placeholder=""/>
                     <br></br>
@@ -23,7 +23,7 @@ class Question extends Component {
             )
         } else if (this.props.type === "radio") {
             return (
-                <div>
+                <div class="question">
                     <p>{this.props.label}</p>
                     {this.props.choices.map((item, index) => (
                         <div class="form-check">

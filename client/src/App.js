@@ -4,6 +4,7 @@ import {
   Routes,
   Route
 } from "react-router-dom";
+import { v4 as uuidv4 } from 'uuid';
 
 import Button from './components/Button';
 import Form from './components/Form';
@@ -18,7 +19,8 @@ class App extends React.Component {
   constructor(){
 		super();
 		this.state = {
-      data: null
+      data: null,
+      id: uuidv4()
     }
 	}
 
@@ -43,7 +45,7 @@ class App extends React.Component {
           <Routes>
             <Route exact path={ROUTES.PAGE1} element={<HomePage/>}/>
             {Object.entries(nextPages).map(([key, value]) => (
-              <Route exact path={key} element={<SoundPage nextPage={value} data={this.state.data[i++]}/>}/>
+              <Route exact path={key} element={<SoundPage idProp={this.state.id} nextPage={value} data={this.state.data[i++]}/>}/>
             ))}
           </Routes>
         </div>
