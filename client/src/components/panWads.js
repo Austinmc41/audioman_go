@@ -107,6 +107,11 @@ export function getSoundNames(){
     return allSoundsNames;
 }
 
+export function getVisitedSoundNames() {
+    console.log(visitedSounds);
+    return visitedSounds;
+}
+
 export function refreshSoundScape(soundScape){
     if (soundScape === "soundscape1") {
         notVisited = soundArray1
