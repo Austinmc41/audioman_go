@@ -1,14 +1,16 @@
 import { Compressor } from 'tone';
 import Wad from 'web-audio-daw';
 import {sounds} from '../object_sounds'
+import {soundscape1} from '../object_sounds'
+import {soundscape2} from '../object_sounds'
 import * as turf from '@turf/turf'
 
 // from https://stackoverflow.com/questions/4602141/variable-name-as-a-string-in-javascript
 const varToString = varObj => Object.keys(varObj)[0];
 // from  https://stackoverflow.com/questions/38824349/how-to-convert-an-object-to-an-array-of-key-value-pairs-in-javascript/50756887
-var soundArray = Object.keys(sounds).map((key) => [String(key), sounds[key]]);
+var soundArray1 = Object.keys(sounds).map((key) => [String(key), soundscape1[key]]);
 // initial list to randomly pick from (sounds will be removed from list each time one is played)
-var notVisited = soundArray; 
+var notVisited = soundArray1; 
 // list to add sounds that have already been played to
 var visitedSounds = [];
 // initial count 
@@ -73,7 +75,7 @@ export function getSoundNames(){
 
 export function refreshSounds(){
     visitedSounds = [];
-    notVisited = soundArray; 
+    notVisited = soundArray1; 
 }
 
 export function setSemiCircle() {
@@ -87,4 +89,4 @@ export function setSemiCircle() {
     }
 }
 
-checkNumSounds(13)
+checkNumSounds(20)
