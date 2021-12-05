@@ -5,8 +5,7 @@ import {soundscape1} from '../object_sounds'
 import {soundscape2} from '../object_sounds'
 import * as turf from '@turf/turf'
 
-// from https://stackoverflow.com/questions/4602141/variable-name-as-a-string-in-javascript
-const varToString = varObj => Object.keys(varObj)[0];
+
 // from  https://stackoverflow.com/questions/38824349/how-to-convert-an-object-to-an-array-of-key-value-pairs-in-javascript/50756887
 var soundArray1 = Object.keys(soundscape1).map((key) => [String(key), soundscape1[key]]);
 
@@ -24,11 +23,11 @@ const allSoundsNames = arrayColumn(allSounds, 0)
 
 
 // initial list to randomly pick from (sounds will be removed from list each time one is played)
-var notVisited = soundArray1; 
+var notVisited; 
 // list to add sounds that have already been played to
 var visitedSounds = [];
 // initial count 
-var count = notVisited.length;
+var count;
 //preprocessed list for spatial audio 
 var semiCircle = [[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]]
 
@@ -40,56 +39,81 @@ var positionGone = [];
 
 setSemiCircle();
 
-export function checkNumSounds(numSounds){
+export function checkNumSounds(numSounds, panOrMonaural, soundScape){
+
+    if (soundScape === "soundscape1") {
+        notVisited = soundArray1
+    } else if (soundScape === "soundscape2") {
+        notVisited = soundArray2
+    }    
+
+    count = notVisited.length;
+
     if (numSounds > count) {
         console.log('Refresh sounds: Currently available sound count is: ' + count);
         return;
     }
     let soundStartTime = 0;
     for (var i = 0; i < numSounds; i++) {   
-        setTimeout(playSound, soundStartTime);
+        setTimeout(playSound(panOrMonaural), soundStartTime);
         soundStartTime += 300;
     }
 }
 
-function playSound() {
+function playSound(panOrMonaural) {
 
     
 
     // @todo pull random position from semicircle and use for
     //  panning in WAD creation 
     const panPosit = Math.floor(Math.random() * semiCircle.length)
-
     const spatialCoord = semiCircle[panPosit]; 
-    console.log(spatialCoord)
-     // Generate random index based on number of sounds to choose from
-     const randIndex = Math.floor(Math.random() * count);
-     // access sound from array
-     console.log(notVisited)
-     const randSound = notVisited[randIndex][1];
-     // creating sound 
-     const sound = new Wad({
+    // Generate random index based on number of sounds to choose from
+    const randIndex = Math.floor(Math.random() * count);
+    // access sound from array
+    console.log(notVisited)
+    const randSound = notVisited[randIndex][1];
+    // creating sound 
+    var sound;
+
+    // if the token is for panning create using hrtf model and randomly selected spatial coordinate
+
+    if (panOrMonaural === "pan") {
+        sound = new Wad({
         source: randSound,
         panning: spatialCoord,
         panningModel: 'HRTF',
         rolloffFactor: 1 })
-     // playing sound
-     sound.play();
-     // adding sound to visited sound
-     visitedSounds.push(notVisited[randIndex])
-     // deleting sound that was just played
-     notVisited.splice(randIndex, 1)
-     // setting count to new count
-     count = notVisited.length;
+    }
+    // otherwise play directly in front 
+    sound = new Wad({
+        source: randSound,
+        panning: [0,0,0],
+        panningModel: 'HRTF',
+        rolloffFactor: 1 })
+
+
+    // playing sound
+    sound.play();
+    // adding sound to visited sound
+    visitedSounds.push(notVisited[randIndex])
+    // deleting sound that was just played
+    notVisited.splice(randIndex, 1)
+    // setting count to new count
+    count = notVisited.length;
 } 
 
 export function getSoundNames(){
     return allSoundsNames;
 }
 
-export function refreshSounds(){
+export function refreshSoundScape(soundScape){
+    if (soundScape === "soundscape1") {
+        notVisited = soundArray1
+    } else if (soundScape === "soundscape2") {
+        notVisited = soundArray2
+    } 
     visitedSounds = [];
-    notVisited = soundArray1; 
 }
 
 export function setSemiCircle() {
@@ -103,5 +127,3 @@ export function setSemiCircle() {
     }
 }
 
-// checkNumSounds(20)
-getSoundNames();
