@@ -5,10 +5,10 @@ const promisify = require('util.promisify')
 const readdir = promisify(fs.readdir)
 const writeFile = promisify(fs.writeFile)
 
-const output_file = 'object_sounds.js'
+const output_file = 'new_object_sounds.js'
 
-const sounds_path = path.join(__dirname, 'sounds')
-path_too_sounds = 'sounds' // this is for rellitive imports to the object_sounds file when it is done
+const sounds_path = path.join(__dirname, 'training_sounds')
+path_too_sounds = 'training_sounds' // this is for rellitive imports to the object_sounds file when it is done
 
 async function importer(file_path, initial_text, folder_path){
 	//returns a string with import statements of the files
