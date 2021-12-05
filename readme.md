@@ -1,6 +1,6 @@
 # Process
 
-1. Add a workflow with a checkbox that asks for panning first or not.
+1. Add a page with a checkbox that asks for panning first or not. Then save this for the conditions in step 7.
 2. Next have a consent form (See IRB documents / exempt_consent form) with a button that says the last line of the consent form document. Save a bool in the global json saying the participant consented.
 3. Then have a page where the user fills out demographic information (age, gender, race, musical ability, anxiety level on tests, hearing level) See the questions document in IRB Files / Questions.
 4. Next, have a page with buttons or a select with all sounds where the user can play the sounds and learn them.
