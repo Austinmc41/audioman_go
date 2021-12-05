@@ -12,6 +12,17 @@ var soundArray1 = Object.keys(soundscape1).map((key) => [String(key), soundscape
 
 var soundArray2 = Object.keys(soundscape2).map((key) => [String(key), soundscape2[key]]);
 
+// 2 array of sounds with sounds path
+var allSounds = soundArray1.concat(soundArray2);
+
+// call back for converting allsounds array to array with only the first entry in each array
+const arrayColumn = (arr, n) => arr.map(x => x[n]);
+
+// all of the names of the sounds from both soundscapes 
+const allSoundsNames = arrayColumn(allSounds, 0)
+
+
+
 // initial list to randomly pick from (sounds will be removed from list each time one is played)
 var notVisited = soundArray1; 
 // list to add sounds that have already been played to
@@ -73,7 +84,7 @@ function playSound() {
 } 
 
 export function getSoundNames(){
-    
+    return allSoundsNames;
 }
 
 export function refreshSounds(){
@@ -92,4 +103,5 @@ export function setSemiCircle() {
     }
 }
 
-checkNumSounds(20)
+// checkNumSounds(20)
+getSoundNames();
