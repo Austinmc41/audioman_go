@@ -85,6 +85,17 @@ function playSound() {
     return allSoundsNames;
 }
 
+export function getAllSounds() {
+	let allSounds = {}
+	const allRawSounds = Object.assign({}, soundscape1, soundscape2)
+	for(const key in allRawSounds){
+		allSounds[key] = new Wad({
+			source: allRawSounds[key]
+		})
+	}
+	return allSounds
+}
+
 export function refreshSounds(){
     visitedSounds = [];
     notVisited = soundArray1; 

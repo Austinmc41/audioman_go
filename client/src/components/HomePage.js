@@ -25,8 +25,9 @@ class HomePage extends Component {
                     <br></br>
                 </div>
                 <div className="container" style={{marginLeft: "65%"}}>
-                    <NavLink exact activeClassName="active" to={ROUTES.PAGE2}>
+                    <NavLink exact activeClassName="active" to={ROUTES.PAGE3}>
                         <FontAwesomeIcon icon={faLongArrowAltRight} size="4x"/>
+                        Next
                     </NavLink>
                 </div>
                 <br></br>

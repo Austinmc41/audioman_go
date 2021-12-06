@@ -12,6 +12,8 @@ import Form from './components/Form';
 import * as ROUTES from "./constants/routes";
 import nextPages from './constants/nextPages';
 import HomePage from "./components/HomePage";
+import Consent from './components/consent'
+import TestSounds from './components/test_sounds'
 import SoundPage from "./components/SoundPage";
 
 import passageJSON from './passages.json'
@@ -32,12 +34,14 @@ class App extends React.Component {
   render() {
     if (!this.state.data) return "Loading...";
 
-    var i = 0;
+    var i = 1;
     return (
       <Router basename='/'>
         <div className="App">
           <Routes>
-            <Route exact path={ROUTES.PAGE1} element={<HomePage/>}/>
+            <Route exact path={ROUTES.PAGE1} element={<Consent/>}/>
+            <Route exact path={ROUTES.PAGE2} element={<HomePage/>}/>
+            <Route exact path="/test_sounds" element={<TestSounds/>}/>
             {Object.entries(nextPages).map(([key, value]) => (
               <Route exact path={key} element={<SoundPage idProp={this.state.id} nextPage={value} data={this.state.data[i++]}/>}/>
             ))}
