@@ -19,9 +19,8 @@ class HomePage extends Component {
     render() {
         return (
             <div>
+            <h1>Demographics</h1>
                 <div className='container' style={{marginLeft: "30%"}}>
-                    <Button/>
-                    <br></br>
                     <Form questions={demographics}/>
                     <br></br>
                 </div>

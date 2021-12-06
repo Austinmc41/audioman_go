@@ -14,25 +14,19 @@ import nextPages from './constants/nextPages';
 import HomePage from "./components/HomePage";
 import SoundPage from "./components/SoundPage";
 
+import passageJSON from './passages.json'
+
 
 class App extends React.Component {
   constructor(){
 		super();
 		this.state = {
-      data: null,
+      data: passageJSON.passages,
       id: uuidv4()
     }
 	}
 
   componentDidMount() {
-    fetch("/passages.json", { 
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        }
-       }).then(res => res.json()).then(x => {
-      this.setState({ data: x["passages"] });
-    });  
   }
 
   render() {

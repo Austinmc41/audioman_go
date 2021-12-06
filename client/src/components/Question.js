@@ -15,16 +15,16 @@ class Question extends Component {
         if (this.props.type === "text") {
             return (
                 <div class="form-group col-md-6 question">
-                    <p>{this.props.label}</p>
-                    <input class="form-control" type={this.props.type} placeholder=""/>
+                    <label for={"inputId" + this.props.label}>{this.props.label}</label>
+                    <input Id={"inputId" + this.props.label} class="form-control" type={this.props.type} placeholder=""/>
                     <br></br>
                     <br></br>
                 </div>
             )
         } else if (this.props.type === "radio") {
             return (
-                <div class="question">
-                    <p>{this.props.label}</p>
+                <fieldset class="question">
+                    <legend>{this.props.label}</legend>
                     {this.props.choices.map((item, index) => (
                         <div class="form-check">
                             <input class="form-check-input" type={"radio"} name={this.props.label} id={item} value={item} />
@@ -34,7 +34,7 @@ class Question extends Component {
                         </div>
                     ))}
                     <br></br>
-                </div>
+                </fieldset>
             )
         } 
     }
