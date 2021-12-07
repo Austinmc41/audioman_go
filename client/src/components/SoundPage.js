@@ -26,8 +26,9 @@ class SoundPage extends Component {
         var result = {};
         for (var i = 0; i < userAnswers.length; i++) {
             result["page" + page + "_question" + (i+1).toString()] = userAnswers[i];
+            result["page" + page + "_question" + (i+1).toString() + "_answer"] = this.props.data.questions[i]["answer"]
         }
-
+        
         if (page === 1) {
             result["_id"] = this.props.idProp;
             axios
