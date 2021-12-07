@@ -43,15 +43,16 @@ class SoundPage extends Component {
         $(".question").each(function(index) {
             userAnswers.push($(this).find('input:radio:checked').val());
         });
-        var page = this.props.nextPage.substring(5) - 2;
+        var page = this.props.nextPage.substring(5) - 3;
 
         var result = {};
         for (var i = 0; i < userAnswers.length; i++) {
             result["page" + page + "_question" + (i+1).toString()] = userAnswers[i];
         }
+        /*
         for (var j = 0; j < categories.length; j++) {
             result["page" + page + "_" + categories[j]["attribute"]] = $("#" + categories[j]["attribute"]).children()[1].value;
-        }
+        }*/
 
         if (page === 1) {
             result["_id"] = this.props.idProp;
@@ -83,8 +84,8 @@ class SoundPage extends Component {
                     <br></br>
                     <Form id="form" questions={questions}/>
                     <br></br>
-                    <NasaTLXForm id="nasa" func={this.getSliderValue}></NasaTLXForm>
-                    <br></br>
+                    {/*<NasaTLXForm id="nasa" func={this.getSliderValue}></NasaTLXForm>
+                    <br></br>*/}
                 </div>
                 <div className="container" style={{marginLeft: "65%"}}>
                     {(this.props.nextPage) &&

@@ -2,12 +2,17 @@ import React, { Component } from 'react';
 import Slider from 'bootstrap-slider';
 import ReactBootstrapSlider from 'react-bootstrap-slider';
 import $ from 'jquery';
+import { NavLink } from 'react-router-dom';
+import axios from 'axios';
 
 import Question from './Question';
 import categories from '../constants/NasaTLX';
 
 import "bootstrap/dist/css/bootstrap.css";
-import "bootstrap-slider/dist/css/bootstrap-slider.css"
+import "bootstrap-slider/dist/css/bootstrap-slider.css";
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLongArrowAltRight } from "@fortawesome/free-solid-svg-icons";
 
 
 class NasaTLXForm extends Component {
@@ -27,9 +32,29 @@ class NasaTLXForm extends Component {
         }
 	}
 
+    handleClick = (e) => {
+        var page = this.props.nextPage.substring(5) - 3;
+
+        var result = {};
+        for (var j = 0; j < categories.length; j++) {
+            result["page" + page + "_" + categories[j]["attribute"]] = $("#" + categories[j]["attribute"]).children()[1].value;
+        }
+
+        if (page === 1) {
+            result["_id"] = this.props.idProp;
+            axios
+                .post("http://localhost:5000/record/add", result)
+                .then((res) => console.log(res.data));
+        } else {
+            axios
+                .post("http://localhost:5000/update/" + this.props.idProp, result)
+                .then((res) => console.log(res.data));
+        }
+    }
+
     render() {
         return (
-            <form class="center">
+            <form class="center" style={{marginLeft: "40%"}}>
                 {categories.map((item, index) => (
                     <div>
                         <div>
@@ -55,6 +80,13 @@ class NasaTLXForm extends Component {
                         <br></br>
                     </div>
                 ))}
+                <div className="container" style={{marginLeft: "30%"}}>
+                    {(this.props.nextPage) &&
+                        <NavLink exact activeClassName="active" to={this.props.nextPage}>
+                            <FontAwesomeIcon onClick={this.handleClick} icon={faLongArrowAltRight} size="4x"/>
+                        </NavLink>
+                    }
+                </div>
             </form>
         )
     }

@@ -15,6 +15,7 @@ import HomePage from "./components/HomePage";
 import Consent from './components/consent'
 import TestSounds from './components/test_sounds'
 import SoundPage from "./components/SoundPage";
+import NasaTLXForm from './components/NasaTLXForm';
 
 import passageJSON from './passages.json'
 
@@ -28,8 +29,7 @@ class App extends React.Component {
     }
 	}
 
-  componentDidMount() {
-  }
+  function
 
   render() {
     if (!this.state.data) return "Loading...";
@@ -42,9 +42,12 @@ class App extends React.Component {
             <Route exact path={ROUTES.PAGE1} element={<Consent/>}/>
             <Route exact path={ROUTES.PAGE2} element={<HomePage/>}/>
             <Route exact path="/test_sounds" element={<TestSounds/>}/>
-            {Object.entries(nextPages).map(([key, value]) => (
-              <Route exact path={key} element={<SoundPage idProp={this.state.id} nextPage={value} data={this.state.data[i++]}/>}/>
-            ))}
+            {Object.entries(nextPages).map(([key, value]) => {
+              return (key === "/page12") || (key === "/page22") ?
+                <Route exact path={key} element={<NasaTLXForm idProp={this.state.id} nextPage={value} data={this.state.data[i++]}/>}/> 
+                :
+                <Route exact path={key} element={<SoundPage idProp={this.state.id} nextPage={value} data={this.state.data[i++]}/>}/>
+            })}
           </Routes>
         </div>
       </Router>
