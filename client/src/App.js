@@ -6,9 +6,6 @@ import {
 } from "react-router-dom";
 import { v4 as uuidv4 } from 'uuid';
 
-import Button from './components/Button';
-import Form from './components/Form';
-
 import * as ROUTES from "./constants/routes";
 import nextPages from './constants/nextPages';
 import HomePage from "./components/HomePage";

@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLongArrowAltRight } from "@fortawesome/free-solid-svg-icons";
 
-import Button from './Button';
 import Form from './Form';
 import * as ROUTES from "../constants/routes";
 import demographics from '../constants/demographics';

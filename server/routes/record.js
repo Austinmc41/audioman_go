@@ -50,18 +50,9 @@ recordRoutes.route("/record/add").post(function (req, response) {
 recordRoutes.route("/update/:id").post(function (req, response) {
   let db_connect = dbo.getDb();
   let myquery = { _id: req.params.id };
-  /*let newvalues = {
-    $set: {
-      person_name: req.body.person_name,
-      person_position: req.body.person_position,
-      person_level: req.body.person_level,
-    },
-  };*/
-  //console.log(myquery);
   let newvalues = {
     $set: req.body
   };
-  //console.log(newvalues)
   db_connect
     .collection("records")
     .updateOne(myquery, newvalues, function (err, res) {
