@@ -53,9 +53,10 @@ class SoundPage extends Component {
                 <div className='container' style={{marginLeft: "30%"}}>
                     <Button/>
                     <br></br>
-                    <strong>{this.props.data["passageName"]}</strong>
-                    <p style={{width: "50%"}}>{this.props.data["passage"]}</p>
+                    <strong style={{fontSize:"24px"}}>{this.props.data["passageName"]}</strong>
                     <br></br>
+                    <br></br>
+                    {/*<p style={{width: "50%"}}>{this.props.data["passage"]}</p>*/}
                     <Form id="form" questions={questions}/>
                     <br></br>
                 </div>

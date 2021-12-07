@@ -49,7 +49,7 @@ class App extends React.Component {
             <Route exact path="/learning_sounds" element={<LearningSounds/>}/>
             <Route exact path="/training" element={<Training {...this.passedProps} />}/>
             {Object.entries(nextPages).map(([key, value]) => {
-              return (key === "/page12") || (key === "/page22") ?
+              return (key === "/page11") || (key === "/page19") ?
                 <Route exact path={key} element={<NasaTLXForm idProp={this.state.id} nextPage={value} data={this.state.data[i++]}/>}/> 
                 :
                 <Route exact path={key} element={<SoundPage idProp={this.state.id} nextPage={value} data={this.state.data[i++]}/>}/>
