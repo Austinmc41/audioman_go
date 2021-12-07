@@ -15,6 +15,8 @@ import LearningSounds from './components/learning_sounds'
 import SoundPage from "./components/SoundPage";
 import NasaTLXForm from './components/NasaTLXForm';
 
+import Speech from './speech'
+
 import passageJSON from './passages.json'
 
 
@@ -25,7 +27,12 @@ class App extends React.Component {
       data: passageJSON.passages,
       id: uuidv4()
     }
-	}
+    this.speechContext = new Speech()
+    this.speechContext.setVoice("Google US English")
+    this.passedProps = {
+      spk: this.speechContext.speak
+    }
+  }
 
   function
 
@@ -40,7 +47,7 @@ class App extends React.Component {
             <Route exact path={ROUTES.PAGE1} element={<Consent/>}/>
             <Route exact path={ROUTES.PAGE2} element={<HomePage/>}/>
             <Route exact path="/learning_sounds" element={<LearningSounds/>}/>
-            <Route exact path="/training" element={<Training />}/>
+            <Route exact path="/training" element={<Training {...this.passedProps} />}/>
             {Object.entries(nextPages).map(([key, value]) => {
               return (key === "/page11") || (key === "/page19") ?
                 <Route exact path={key} element={<NasaTLXForm idProp={this.state.id} nextPage={value} data={this.state.data[i++]}/>}/> 
