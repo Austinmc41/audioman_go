@@ -36,7 +36,21 @@ class Question extends Component {
                     <br></br>
                 </fieldset>
             )
-        } 
+        } else if (this.props.type === "select") {
+            return (
+                <div class="question">
+                    <label for={this.props.label}>{this.props.label}</label>
+                      <select Id={this.props.label}>
+                      {this.props.choices.map((item, index) => (
+                          <option key={this.props.label+item} value={item}>
+                                {item}
+                        </option>
+                    ))}
+                    </select>
+                    <br></br>
+                  </div>
+            )
+        }  
     }
 }
 

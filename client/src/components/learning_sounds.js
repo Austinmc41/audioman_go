@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 
 import { getAllSounds } from './panWads'
 
-export default class TestSounds extends Component {
+export default class LearningSounds extends Component {
 	constructor(props){
 		super(props)
 		this.sounds = getAllSounds()

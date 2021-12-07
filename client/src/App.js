@@ -10,7 +10,8 @@ import * as ROUTES from "./constants/routes";
 import nextPages from './constants/nextPages';
 import HomePage from "./components/HomePage";
 import Consent from './components/consent'
-import TestSounds from './components/test_sounds'
+import Training from './components/training'
+import LearningSounds from './components/learning_sounds'
 import SoundPage from "./components/SoundPage";
 import NasaTLXForm from './components/NasaTLXForm';
 
@@ -38,7 +39,8 @@ class App extends React.Component {
           <Routes>
             <Route exact path={ROUTES.PAGE1} element={<Consent/>}/>
             <Route exact path={ROUTES.PAGE2} element={<HomePage/>}/>
-            <Route exact path="/test_sounds" element={<TestSounds/>}/>
+            <Route exact path="/learning_sounds" element={<LearningSounds/>}/>
+            <Route exact path="/training" element={<Training />}/>
             {Object.entries(nextPages).map(([key, value]) => {
               return (key === "/page12") || (key === "/page22") ?
                 <Route exact path={key} element={<NasaTLXForm idProp={this.state.id} nextPage={value} data={this.state.data[i++]}/>}/> 
