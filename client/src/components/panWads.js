@@ -93,12 +93,14 @@ function playSound(panOrMonaural) {
         source: randSound,
         panning: spatialCoord,
         panningModel: 'HRTF',
+        loop: true,
         rolloffFactor: 1 })
         } else {
      // otherwise play directly in front 
         sound = new Wad({
         source: randSound,
         panning: [0,0,0],
+        loop: true,
         panningModel: 'HRTF',
         rolloffFactor: 1 })
         }
@@ -107,7 +109,7 @@ function playSound(panOrMonaural) {
     sound.soundName = randSoundAndName[0]
 
     // playing sound
-    sound.play();
+    sound.play({loop:true});
     // adding sound to visited sound
     visitedSounds.push(sound)
     // deleting sound that was just played
@@ -143,7 +145,8 @@ export function getAllSounds(soundScapes=["soundscape1", "soundscape2"]) {
 	Object.keys(allRawSounds).forEach(key=>{
 		if(!allRawSounds[key].play){
 			allSounds[key] = new Wad({
-				source: allRawSounds[key]
+				source: allRawSounds[key],
+				loop: true
 			})
 		} else {
 			allSounds[key] = allRawSounds[key]
@@ -166,7 +169,7 @@ export function refreshSoundScape(soundScape){
 }
 
 export function setSemiCircle() {
-    var r = 20;
+    var r = 10;
     var step = Math.PI/20; 
     for (var i = 0; i < 20; i++) {
         var x = r*Math.cos(step*i);

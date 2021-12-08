@@ -1,73 +1,41 @@
-import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
-import axios from 'axios';
-import $ from 'jquery';
+import React, { Component } from 'react'
+import Question   from './Question'
+import { getSoundNames } from './panWads'
+import _ from 'lodash'
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLongArrowAltRight } from "@fortawesome/free-solid-svg-icons";
+import SoundTrial from './soundTrial'
 
-import Button from './Button';
-import Form from './Form';
-
-
-class SoundPage extends Component {
-    constructor(props){
-		super(props);
-		this.state = {}
+export default class Training extends Component {
+	constructor(props){
+		super(props)
+		this.state = {
+			condition: this.props.condition,
+			soundScape: this.props.soundScape,
+			increment: 2,
+			maxSounds: 20,
+			trialLength: 60000,
+		}
+		this.soundNames = getSoundNames()
+		this.startTrial = this.startTrial.bind(this)
+		this.handleComplete = this.handleComplete.bind(this)
 	}
 
-    handleClick = (e) => {
-        var userAnswers = [];
-        $(".question").each(function(index) {
-            userAnswers.push($(this).find('input:radio:checked').val());
-        });
-        var page = this.props.nextPage.substring(5) - 3;
+	startTrial(){
+//		this.props.spk(trainingPassage.passage)
+//			.then(stopSounds) // not working for some reason
+	}
 
-        var result = {};
-        for (var i = 0; i < userAnswers.length; i++) {
-            result["page" + page + "_question" + (i+1).toString()] = userAnswers[i];
-            result["page" + page + "_question" + (i+1).toString() + "_answer"] = this.props.data.questions[i]["answer"]
-        }
+	handleComplete(state){
+		alert("you are done")
+		console.log(state.trials)
+	}
 
-        axios
-            .post("http://localhost:5000/update/" + this.props.idProp, result)
-            .then((res) => console.log(res.data));
-    }
-
-    render() {
-        var questions = this.props.data.questions.map((obj) => {
-            obj['label'] = obj['question'];
-            obj['type'] = "radio";
-            return obj;
-        });
-        
-        if (!questions) return "Loading...";
-        return (
-            <div>
-                <div className='container' style={{marginLeft: "30%"}}>
-                    <Button/>
-                    <br></br>
-                    <strong style={{fontSize:"24px"}}>{this.props.data["passageName"]}</strong>
-                    <br></br>
-                    <br></br>
-                    {/*<p style={{width: "50%"}}>{this.props.data["passage"]}</p>*/}
-                    <Form id="form" questions={questions}/>
-                    <br></br>
-                </div>
-                <div className="container" style={{marginLeft: "65%"}}>
-                    {(this.props.nextPage) &&
-                        <NavLink exact activeClassName="active" to={this.props.nextPage}>
-                            <FontAwesomeIcon onClick={this.handleClick} icon={faLongArrowAltRight} size="4x"/>
-                        </NavLink>
-                    }
-                </div>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br> 
-            </div>
-        )
-    }
+	render(){
+		return(
+			<div>
+			<h1>Trial</h1>
+			<SoundTrial trialLength={this.state.trialLength} maxSounds={this.state.maxSounds} increment={this.state.increment} soundScape={this.state.soundScape} condition={this.state.condition} onNext={this.handleNext} onComplete={this.handleComplete} allowReset={false} soundOptions={this.soundNames} />
+			</div>
+		)
+	}
 }
-
-export default SoundPage;

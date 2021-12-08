@@ -5,6 +5,7 @@ import {
   Route
 } from "react-router-dom";
 import { v4 as uuidv4 } from 'uuid';
+import _ from 'lodash'
 
 import * as ROUTES from "./constants/routes";
 import nextPages from './constants/nextPages';
@@ -26,7 +27,9 @@ class App extends React.Component {
 		super();
 		this.state = {
       data: passageJSON.passages,
-      id: uuidv4()
+      id: uuidv4(),
+      condition: "pan",
+      soundScape: "soundscape" + _.random(1,2),
     }
     this.speechContext = new Speech()
     this.passedProps = {
@@ -48,6 +51,11 @@ class App extends React.Component {
             <Route exact path={ROUTES.PAGE2} element={<HomePage idProp={this.state.id} {...this.passedProps} />}/>
             <Route exact path="/learning_sounds" element={<LearningSounds/>} {...this.passedProps} />
             <Route exact path="/controll" element={<Controll />} {...this.passedProps} />
+            <Route exact path="/trial1" element={<SoundPage condition={this.state.condition} soundScape={this.state.soundScape} />} {...this.passedProps} />
+            <Route exact path="/trial2" element={<SoundPage condition={this.state.condition === "pan" ? "monaural" : "pan"} soundScape={this.state.soundScape === "soundscape1" ? "soundscape2" : "soundscape1"} />} {...this.passedProps} />
+
+
+{/*
             <Route exact path="/training" element={<Training {...this.passedProps} />}/>
             {Object.entries(nextPages).map(([key, value]) => {
               return (key === "/page11") || (key === "/page19") ?
@@ -55,6 +63,7 @@ class App extends React.Component {
                 :
                 <Route key={key} exact path={key} element={<SoundPage idProp={this.state.id} nextPage={value} data={this.state.data[i++]}/>} {...this.passedProps} />
             })}
+*/}
           </Routes>
         </div>
       </Router>
