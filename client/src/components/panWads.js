@@ -153,12 +153,15 @@ export function getAllSounds(soundScapes=["soundscape1", "soundscape2"]) {
 }
 
 export function refreshSoundScape(soundScape){
+	visitedSounds = []
     if (soundScape === "soundscape1") {
-        notVisited = soundArray1
+        notVisited = soundArray1.slice()
     } else if (soundScape === "soundscape2") {
-        notVisited = soundArray2
+        notVisited = soundArray2.slice()
     } else if(soundScape === "training"){
-      notVisited =  trainingSoundArray
+      notVisited =  trainingSoundArray.slice()
+    } else {
+      notVisited = []
     }
 }
 

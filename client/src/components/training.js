@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Question   from './Question'
-import { getAllSounds, checkNumSounds, stopSounds } from './panWads'
+import { getAllSounds, refreshSoundScape, checkNumSounds, stopSounds } from './panWads'
 import _ from 'lodash'
 
 const trainingPassage =         {
@@ -84,6 +84,7 @@ export default class Training extends Component {
 			this.setState({numberOfSounds: 3, played: false, selectedSounds: {}})
 		:
 			this.setState({numberOfSounds: this.state.numberOfSounds+1, played: false, selectedSounds: {}})
+			refreshSoundScape("training")
 		alert(`You are ${correct}! The correct answers are: ${_.toString(actualSounds)}. You selected ${_.toString(selectedSounds)}.`)
 	}
 
@@ -100,7 +101,7 @@ export default class Training extends Component {
 
 	render(){
 		const soundChoices = this.sound_list.map((s, num)=>(
-			<Question type="select" label={"sound" + (num+1)} handleChange={this.handleSoundChange} key={num} choices={["---"].concat(this.sound_list)} />
+			<Question type="select" label={"sound" + (num+1)} handleChange={this.handleSoundChange} key={num + this.state.numberOfSounds} choices={["---"].concat(this.sound_list)} />
 		))
 		const questions = trainingPassage["questions"].map(question=>(
 			<Question label={question.question} type="radio" choices={question.choices} />
