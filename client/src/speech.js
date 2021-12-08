@@ -2,7 +2,7 @@ export default class Speech {
 	constructor() {
 		this.synth = window.speechSynthesis;
 		this.voices = [];
-		this.voice = 4;
+		this.voice = 0;
 		this.pitch = 1;
 		this.rate = 1;
 		this.populateVoiceList = this.populateVoiceList.bind(this);

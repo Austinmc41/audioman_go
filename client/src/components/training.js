@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Question   from './Question'
 import { getAllSounds, checkNumSounds, stopSounds } from './panWads'
-
+import _ from 'lodash'
 
 const trainingPassage =         {
             "passageName": "Shoveling Snow",
@@ -46,35 +46,61 @@ const trainingPassage =         {
             ]
         }
 
+/*
+The answer object will look like:
+{
+	trial1: {
+		sounds: {
+			actualSounds: ["sound1","sound2","sound3"],
+			selectedSounds: ["sound1", "sound3", "sound9"]
+		}
+	}
+}
+*/
+
 export default class Training extends Component {
 	constructor(props){
 		super(props)
 		this.state = {
 			numberOfSounds: 3,
-			condition: "monaural"
+			condition: "monaural",
+			played: false,
+			selectedSounds: {}
 		}
 		this.sounds = getAllSounds(["training"])
 		this.sound_list = Object.keys(this.sounds)
 		this.startTrial = this.startTrial.bind(this)
 		this.handleNext = this.handleNext.bind(this)
+		this.handleSoundChange = this.handleSoundChange.bind(this)
 	}
 
 	handleNext(){
+		const currentSounds = getAllSounds(["visitedSounds"])
+		const actualSounds = Object.keys(currentSounds).sort()
+		const selectedSounds = Object.values(this.state.selectedSounds).sort()
+		const correct = _.isEqual(actualSounds, selectedSounds) ? "correct" : "wrong"
+		stopSounds()
 		this.state.numberOfSounds === this.sound_list.length ?
-			this.setState({numberOfSounds: 3})
+			this.setState({numberOfSounds: 3, played: false, selectedSounds: {}})
 		:
-			this.setState({numberOfSounds: this.state.numberOfSounds+1})
+			this.setState({numberOfSounds: this.state.numberOfSounds+1, played: false, selectedSounds: {}})
+		alert(`You are ${correct}! The correct answers are: ${_.toString(actualSounds)}. You selected ${_.toString(selectedSounds)}.`)
 	}
 
 	startTrial(){
 		checkNumSounds(this.state.numberOfSounds, this.state.condition, "training")
-		this.props.spk(trainingPassage.passage)
-			.then(stopSounds) // not working for some reason
+//		this.props.spk(trainingPassage.passage)
+//			.then(stopSounds) // not working for some reason
+		this.setState({played: true})
+	}
+
+	handleSoundChange(e, value, p){
+		this.setState({selectedSounds: Object.assign({}, this.state.selectedSounds, {[p.label]: value})})
 	}
 
 	render(){
 		const soundChoices = this.sound_list.map((s, num)=>(
-			<Question type="select" label={"sound" + (num+1)} key={num} choices={["---"].concat(this.sound_list)} />
+			<Question type="select" label={"sound" + (num+1)} handleChange={this.handleSoundChange} key={num} choices={["---"].concat(this.sound_list)} />
 		))
 		const questions = trainingPassage["questions"].map(question=>(
 			<Question label={question.question} type="radio" choices={question.choices} />
@@ -90,12 +116,14 @@ export default class Training extends Component {
 
 			<h2>trial {this.state.numberOfSounds -2}</h2>
 			<p>Click the button to start the trial. Note that the trial will last about a minute, and you can't stop or pause the trial once it's started!</p>
-			<button onClick={this.startTrial}>Start Trial</button>
+			<button disabled={this.state.played} onClick={this.startTrial}>Start Trial</button>
 			<h3>Sounds</h3>
 			{soundChoices}
+			{/*
 			<h3>Story Questions</h3>
 			{questions}
-			<button onClick={this.handleNext}>{this.state.numberOfSounds === this.sound_list.length ? "Reset to 3 sounds" : "Next"}</button>
+			*/}
+			<button disabled={!this.state.played} onClick={this.handleNext}>{this.state.numberOfSounds === this.sound_list.length ? "Reset to 3 sounds" : "Next"}</button>
 			</div>
 		)
 	}

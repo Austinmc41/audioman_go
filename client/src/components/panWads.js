@@ -27,7 +27,7 @@ const allSoundsNames = arrayColumn(allSounds, 0)
 
 
 // initial list to randomly pick from (sounds will be removed from list each time one is played)
-var notVisited; 
+var notVisited = [];
 // list to add sounds that have already been played to
 var visitedSounds = [];
 // initial count 
@@ -46,11 +46,11 @@ setSemiCircle();
 export function checkNumSounds(numSounds, panOrMonaural, soundScape){
 
     if (soundScape === "soundscape1") {
-        notVisited = soundArray1
+        notVisited = soundArray1.slice()
     } else if (soundScape === "soundscape2") {
-        notVisited = soundArray2
+        notVisited = soundArray2.slice()
     }    else if (soundScape === "training") {
-        notVisited = trainingSoundArray
+        notVisited = trainingSoundArray.slice()
 }
 
     count = notVisited.length;
@@ -80,8 +80,9 @@ function playSound(panOrMonaural) {
     // Generate random index based on number of sounds to choose from
     const randIndex = Math.floor(Math.random() * count);
     // access sound from array
-    console.log(notVisited)
-    const randSound = notVisited[randIndex][1];
+//    console.log(notVisited)
+    const randSoundAndName = notVisited[randIndex];
+    const randSound = randSoundAndName[1];
     // creating sound 
     var sound;
 
@@ -102,11 +103,13 @@ function playSound(panOrMonaural) {
         rolloffFactor: 1 })
         }
 
+    // adding the sound name to the Wad sound object
+    sound.soundName = randSoundAndName[0]
 
     // playing sound
     sound.play();
     // adding sound to visited sound
-    visitedSounds.push(notVisited[randIndex])
+    visitedSounds.push(sound)
     // deleting sound that was just played
     notVisited.splice(randIndex, 1)
     // setting count to new count
@@ -126,14 +129,26 @@ export function getAllSounds(soundScapes=["soundscape1", "soundscape2"]) {
 	if(soundScapes.includes("soundscape1")) soundScapeList.push(soundscape1)
 	if(soundScapes.includes("soundscape2")) soundScapeList.push(soundscape2)
 	if(soundScapes.includes("training")) soundScapeList.push(training_sounds)
+	if(soundScapes.includes("visitedSounds")) {
+		const visitedSoundObj = visitedSounds.reduce((o, s)=>{
+			o[s.soundName] = s
+			return o
+		}, {})
+		soundScapeList.push(visitedSoundObj  )
+	}
+//	if(soundScapes.includes("notVisited") && notVisited.length) soundScapeList.push(notVisited)
 	
 	let allSounds = {}
 	const allRawSounds = Object.assign({}, ...soundScapeList)
-	for(const key in allRawSounds){
-		allSounds[key] = new Wad({
-			source: allRawSounds[key]
-		})
-	}
+	Object.keys(allRawSounds).forEach(key=>{
+		if(!allRawSounds[key].play){
+			allSounds[key] = new Wad({
+				source: allRawSounds[key]
+			})
+		} else {
+			allSounds[key] = allRawSounds[key]
+		}
+	})
 	return allSounds
 }
 
@@ -148,7 +163,7 @@ export function refreshSoundScape(soundScape){
 }
 
 export function setSemiCircle() {
-    var r = 25;
+    var r = 20;
     var step = Math.PI/20; 
     for (var i = 0; i < 20; i++) {
         var x = r*Math.cos(step*i);
