@@ -53,25 +53,47 @@ export default class Training extends Component {
 	constructor(props){
 		super(props)
 		this.state = {
-			condition: "monaural"
+			numberOfSounds: 3,
+			condition: "monaural",
+			played: false,
+			selectedSounds: {}
 		}
+		this.sounds = getAllSounds(["training"])
+		this.sound_list = Object.keys(this.sounds)
 		this.startTrial = this.startTrial.bind(this)
 		this.handleNext = this.handleNext.bind(this)
+		this.handleSoundChange = this.handleSoundChange.bind(this)
 	}
 
-	handleNext(currentSounds, stateObj){
+	handleNext(){
+		const currentSounds = getAllSounds(["visitedSounds"])
 		const actualSounds = Object.keys(currentSounds).sort()
-		const selectedSounds = Object.values(stateObj.selectedSounds).sort()
+		const selectedSounds = Object.values(this.state.selectedSounds).sort()
 		const correct = _.isEqual(actualSounds, selectedSounds) ? "correct" : "wrong"
+		stopSounds()
+		this.state.numberOfSounds === this.sound_list.length ?
+			this.setState({numberOfSounds: 3, played: false, selectedSounds: {}})
+		:
+			this.setState({numberOfSounds: this.state.numberOfSounds+1, played: false, selectedSounds: {}})
+			refreshSoundScape("training")
 		alert(`You are ${correct}! The correct answers are: ${_.toString(actualSounds)}. You selected ${_.toString(selectedSounds)}.`)
 	}
 
 	startTrial(){
+		checkNumSounds(this.state.numberOfSounds, this.state.condition, "training")
 //		this.props.spk(trainingPassage.passage)
 //			.then(stopSounds) // not working for some reason
+		this.setState({played: true})
+	}
+
+	handleSoundChange(e, value, p){
+		this.setState({selectedSounds: Object.assign({}, this.state.selectedSounds, {[p.label]: value})})
 	}
 
 	render(){
+		const soundChoices = this.sound_list.map((s, num)=>(
+			<Question type="select" label={"sound" + (num+1)} handleChange={this.handleSoundChange} key={num + this.state.numberOfSounds} choices={["---"].concat(this.sound_list)} />
+		))
 		const questions = trainingPassage["questions"].map(question=>(
 			<Question label={question.question} type="radio" choices={question.choices} />
 		))
@@ -82,13 +104,18 @@ export default class Training extends Component {
 			<h2>Configuration</h2>
 			<p>One set of trials will be using the panning condition, and the other will be using the monaural condition. You should practice with both.</p>
 			<Question handleChange={(e, value)=>this.setState({condition:value})} type="radio" label="Condition" choices={["monaural", "pan"]} />
+			<button onClick={()=>this.setState({numberOfSounds: 3})}>Reset sounds to 3 from {this.state.numberOfSounds}</button>
 
-			<SoundTrial soundScape="training" condition={this.state.condition} onNext={this.handleNext} />
-
+			<h2>trial {this.state.numberOfSounds -2}</h2>
+			<p>Click the button to start the trial. Note that the trial will last about a minute, and you can't stop or pause the trial once it's started!</p>
+			<button disabled={this.state.played} onClick={this.startTrial}>Start Trial</button>
+			<h3>Sounds</h3>
+			{soundChoices}
 			{/*
 			<h3>Story Questions</h3>
 			{questions}
 			*/}
+			<button disabled={!this.state.played} onClick={this.handleNext}>{this.state.numberOfSounds === this.sound_list.length ? "Reset to 3 sounds" : "Next"}</button>
 			</div>
 		)
 	}
