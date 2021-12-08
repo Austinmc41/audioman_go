@@ -3,6 +3,7 @@ import Wad from 'web-audio-daw';
 // import {sounds} from '../object_sounds'
 import {soundscape1} from '../object_sounds'
 import {soundscape2} from '../object_sounds'
+import {training_sounds} from '../object_sounds'
 import * as turf from '@turf/turf'
 
 // from https://stackoverflow.com/questions/4602141/variable-name-as-a-string-in-javascript
@@ -11,6 +12,8 @@ const varToString = varObj => Object.keys(varObj)[0];
 var soundArray1 = Object.keys(soundscape1).map((key) => [String(key), soundscape1[key]]);
 
 var soundArray2 = Object.keys(soundscape2).map((key) => [String(key), soundscape2[key]]);
+
+var trainingSoundArray = Object.keys(training_sounds).map((key) => [String(key), training_sounds[key]]);
 
 // 2 array of sounds with sounds path
 var allSounds = soundArray1.concat(soundArray2);
@@ -46,7 +49,9 @@ export function checkNumSounds(numSounds, panOrMonaural, soundScape){
         notVisited = soundArray1
     } else if (soundScape === "soundscape2") {
         notVisited = soundArray2
-    }    
+    }    else if (soundScape === "training") {
+        notVisited = trainingSoundArray
+}
 
     count = notVisited.length;
 
@@ -112,9 +117,14 @@ export function getSoundNames(){
     return allSoundsNames;
 }
 
-export function getAllSounds() {
+export function getAllSounds(soundScapes=["soundscape1", "soundscape2"]) {
+	const soundScapeList = []
+	if(soundScapes.includes("soundscape1")) soundScapeList.push(soundscape1)
+	if(soundScapes.includes("soundscape2")) soundScapeList.push(soundscape2)
+	if(soundScapes.includes("training")) soundScapeList.push(training_sounds)
+	
 	let allSounds = {}
-	const allRawSounds = Object.assign({}, soundscape1, soundscape2)
+	const allRawSounds = Object.assign({}, ...soundScapeList)
 	for(const key in allRawSounds){
 		allSounds[key] = new Wad({
 			source: allRawSounds[key]
@@ -128,7 +138,9 @@ export function refreshSoundScape(soundScape){
         notVisited = soundArray1
     } else if (soundScape === "soundscape2") {
         notVisited = soundArray2
-    } 
+    } else if(soundScape === "training"){
+      notVisited =  trainingSoundArray
+    }
 }
 
 export function setSemiCircle() {

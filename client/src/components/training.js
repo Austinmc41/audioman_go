@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import Question   from './Question'
+import { getAllSounds } from './panWads'
+
 
 const trainingPassage =         {
             "passageName": "Shoveling Snow",
@@ -47,14 +49,15 @@ const trainingPassage =         {
 export default class Training extends Component {
 	constructor(props){
 		super(props)
-		setTimeout(()=>this.props.spk("I like cheese"), 500)
+		this.sounds = getAllSounds(["training"])
+		this.sound_list = Object.keys(this.sounds)
 	}
 
 	render(){
 		return(
 			<div>
 			<h1>Training Trial</h1>
-			<Question type="select" label="Color" choices={["orange","green"]} />
+			<Question type="select" label="Sound Options" choices={this.sound_list} />
 			</div>
 		)
 	}
