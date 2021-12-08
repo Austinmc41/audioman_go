@@ -45,7 +45,7 @@ class App extends React.Component {
         <div className="App">
           <Routes>
             <Route exact path={ROUTES.PAGE1} element={<Consent/>}/>
-            <Route exact path={ROUTES.PAGE2} element={<HomePage/>}/>
+            <Route exact path={ROUTES.PAGE2} element={<HomePage idProp={this.state.id}/>}/>
             <Route exact path="/learning_sounds" element={<LearningSounds/>}/>
             <Route exact path="/training" element={<Training {...this.passedProps} />}/>
             {Object.entries(nextPages).map(([key, value]) => {

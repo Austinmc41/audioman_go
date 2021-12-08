@@ -28,17 +28,10 @@ class SoundPage extends Component {
             result["page" + page + "_question" + (i+1).toString()] = userAnswers[i];
             result["page" + page + "_question" + (i+1).toString() + "_answer"] = this.props.data.questions[i]["answer"]
         }
-        
-        if (page === 1) {
-            result["_id"] = this.props.idProp;
-            axios
-                .post("http://localhost:5000/record/add", result)
-                .then((res) => console.log(res.data));
-        } else {
-            axios
-                .post("http://localhost:5000/update/" + this.props.idProp, result)
-                .then((res) => console.log(res.data));
-        }
+
+        axios
+            .post("http://localhost:5000/update/" + this.props.idProp, result)
+            .then((res) => console.log(res.data));
     }
 
     render() {
