@@ -19,21 +19,21 @@ class Question extends Component {
     render() {
         if (this.props.type === "text") {
             return (
-                <div class="form-group col-md-6 question">
-                    <label htmlFor={"inputId" + this.props.label}>{this.props.label}</label>
-                    <input Id={"inputId" + this.props.label} class="form-control" type={this.props.type} placeholder="" onChange={this.handleChange} />
+                <div className="form-group col-md-6 question">
+                    <label htmlFor={"inputid" + this.props.label}>{this.props.label}</label>
+                    <input id={"inputid" + this.props.label} className="form-control" type={this.props.type} placeholder="" onChange={this.handleChange} />
                     <br></br>
                     <br></br>
                 </div>
             )
         } else if (this.props.type === "radio") {
             return (
-                <fieldset class="question">
+                <fieldset className="question">
                     <legend>{this.props.label}</legend>
                     {this.props.choices.map((item, index) => (
-                        <div class="form-check">
-                            <input class="form-check-input" type={"radio"} name={this.props.label} Id={item} value={item} onChange={this.handleChange} />
-                            <label class="form-check-label" htmlFor={item}>
+                        <div key={item + this.props.label} className="form-check">
+                            <input className="form-check-input" type={"radio"} name={this.props.label} id={item} value={item} onChange={this.handleChange} />
+                            <label className="form-check-label" htmlFor={item}>
                                 {item}
                             </label>
                         </div>
@@ -43,9 +43,9 @@ class Question extends Component {
             )
         } else if (this.props.type === "select") {
             return (
-                <div class="question">
+                <div className="question">
                     <label htmlFor={this.props.label}>{this.props.label}</label>
-                      <select Id={this.props.label} onChange={this.handleChange}>
+                      <select id={this.props.label} onChange={this.handleChange}>
                       {this.props.choices.map((item, index) => (
                           <option key={this.props.label+item} value={item}>
                                 {item}
