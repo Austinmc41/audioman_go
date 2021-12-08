@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Question   from './Question'
-import { getAllSounds } from './panWads'
+import { getAllSounds, checkNumSounds, stopSounds } from './panWads'
 
 
 const trainingPassage =         {
@@ -49,15 +49,53 @@ const trainingPassage =         {
 export default class Training extends Component {
 	constructor(props){
 		super(props)
+		this.state = {
+			numberOfSounds: 3,
+			condition: "monaural"
+		}
 		this.sounds = getAllSounds(["training"])
 		this.sound_list = Object.keys(this.sounds)
+		this.startTrial = this.startTrial.bind(this)
+		this.handleNext = this.handleNext.bind(this)
+	}
+
+	handleNext(){
+		this.state.numberOfSounds === this.sound_list.length ?
+			this.setState({numberOfSounds: 3})
+		:
+			this.setState({numberOfSounds: this.state.numberOfSounds+1})
+	}
+
+	startTrial(){
+		checkNumSounds(this.state.numberOfSounds, this.state.condition, "training")
+		this.props.spk(trainingPassage.passage)
+			.then(stopSounds) // not working for some reason
 	}
 
 	render(){
+		const soundChoices = this.sound_list.map((s, num)=>(
+			<Question type="select" label={"sound" + (num+1)} key={num} choices={["---"].concat(this.sound_list)} />
+		))
+		const questions = trainingPassage["questions"].map(question=>(
+			<Question label={question.question} type="radio" choices={question.choices} />
+		))
+
 		return(
 			<div>
 			<h1>Training Trial</h1>
-			<Question type="select" label="Sound Options" choices={this.sound_list} />
+			<h2>Configuration</h2>
+			<p>One set of trials will be using the panning condition, and the other will be using the monaural condition. You should practice with both.</p>
+			<Question type="radio" label="Condition" choices={["Monaural", "Panning"]} />
+			<button onClick={()=>this.setState({numberOfSounds: 3})}>Reset sounds to 3 from {this.state.numberOfSounds}</button>
+
+			<h2>trial {this.state.numberOfSounds -2}</h2>
+			<p>Click the button to start the trial. Note that the trial will last about a minute, and you can't stop or pause the trial once it's started!</p>
+			<button onClick={this.startTrial}>Start Trial</button>
+			<h3>Sounds</h3>
+			{soundChoices}
+			<h3>Story Questions</h3>
+			{questions}
+			<button onClick={this.handleNext}>{this.state.numberOfSounds === this.sound_list.length ? "Reset to 3 sounds" : "Next"}</button>
 			</div>
 		)
 	}

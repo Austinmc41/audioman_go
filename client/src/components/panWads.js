@@ -66,6 +66,10 @@ export function checkNumSounds(numSounds, panOrMonaural, soundScape){
     }
 }
 
+export function stopSounds(){
+	visitedSounds.forEach(sound=>sound.stop())
+}
+
 function playSound(panOrMonaural) {
     // @todo pull random position from semicircle and use for
     //  panning in WAD creation 
