@@ -32,7 +32,7 @@ class Question extends Component {
                     <legend>{this.props.label}</legend>
                     {this.props.choices.map((item, index) => (
                         <div class="form-check">
-                            <input class="form-check-input" type={"radio"} name={this.props.label} id={item} value={item} onChange={this.handleChange} />
+                            <input class="form-check-input" type={"radio"} name={this.props.label} Id={item} value={item} onChange={this.handleChange} />
                             <label class="form-check-label" htmlFor={item}>
                                 {item}
                             </label>
