@@ -148,7 +148,7 @@ export function refreshSoundScape(soundScape){
 }
 
 export function setSemiCircle() {
-    var r = 50;
+    var r = 25;
     var step = Math.PI/20; 
     for (var i = 0; i < 20; i++) {
         var x = r*Math.cos(step*i);
