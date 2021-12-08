@@ -12,6 +12,7 @@ import HomePage from "./components/HomePage";
 import Consent from './components/consent'
 import Training from './components/training'
 import LearningSounds from './components/learning_sounds'
+import Controll from './components/controllCondition'
 import SoundPage from "./components/SoundPage";
 import NasaTLXForm from './components/NasaTLXForm';
 
@@ -44,15 +45,16 @@ class App extends React.Component {
       <Router basename='/'>
         <div className="App">
           <Routes>
-            <Route exact path={ROUTES.PAGE1} element={<Consent/>}/>
-            <Route exact path={ROUTES.PAGE2} element={<HomePage idProp={this.state.id}/>}/>
-            <Route exact path="/learning_sounds" element={<LearningSounds/>}/>
+            <Route exact path={ROUTES.PAGE1} element={<Consent {...this.passedProps} />}/>
+            <Route exact path={ROUTES.PAGE2} element={<HomePage idProp={this.state.id} {...this.passedProps} />}/>
+            <Route exact path="/learning_sounds" element={<LearningSounds/>} {...this.passedProps} />
+            <Route exact path="/controll" element={<Controll />} {...this.passedProps} />
             <Route exact path="/training" element={<Training {...this.passedProps} />}/>
             {Object.entries(nextPages).map(([key, value]) => {
               return (key === "/page11") || (key === "/page19") ?
-                <Route exact path={key} element={<NasaTLXForm idProp={this.state.id} nextPage={value} data={this.state.data[i++]}/>}/> 
+                <Route exact path={key} element={<NasaTLXForm idProp={this.state.id} nextPage={value} data={this.state.data[i++]}/>} {...this.passedProps} /> 
                 :
-                <Route exact path={key} element={<SoundPage idProp={this.state.id} nextPage={value} data={this.state.data[i++]}/>}/>
+                <Route exact path={key} element={<SoundPage idProp={this.state.id} nextPage={value} data={this.state.data[i++]}/>} {...this.passedProps} />
             })}
           </Routes>
         </div>
