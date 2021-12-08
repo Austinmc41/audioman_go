@@ -72,10 +72,6 @@ export default class Training extends Component {
 			.then(stopSounds) // not working for some reason
 	}
 
-	handleChange(e, value, label){
-		alert(value)
-	}
-
 	render(){
 		const soundChoices = this.sound_list.map((s, num)=>(
 			<Question type="select" label={"sound" + (num+1)} key={num} choices={["---"].concat(this.sound_list)} />
@@ -89,7 +85,7 @@ export default class Training extends Component {
 			<h1>Training Trial</h1>
 			<h2>Configuration</h2>
 			<p>One set of trials will be using the panning condition, and the other will be using the monaural condition. You should practice with both.</p>
-			<Question handleChange={this.handleChange} type="radio" label="Condition" choices={["Monaural", "Panning"]} selected="Monaural" />
+			<Question handleChange={(e, value)=>this.setState({condition:value})} type="radio" label="Condition" choices={["monaural", "pan"]} />
 			<button onClick={()=>this.setState({numberOfSounds: 3})}>Reset sounds to 3 from {this.state.numberOfSounds}</button>
 
 			<h2>trial {this.state.numberOfSounds -2}</h2>
