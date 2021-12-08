@@ -19,6 +19,7 @@
     "bootstrap-slider": "^11.0.2",
     "dotenv": "^10.0.0",
     "jquery": "^3.6.0",
+    "lodash": "^4.17.21",
     "mongodb": "^4.2.0",
     "react": "^17.0.2",
     "react-bootstrap-slider": "^3.0.0",
