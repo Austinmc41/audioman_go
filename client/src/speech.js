@@ -1,4 +1,4 @@
-﻿export default class Speech {
+export default class Speech {
 	constructor() {
 		this.synth = window.speechSynthesis;
 		this.voices = [];
