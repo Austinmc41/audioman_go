@@ -24,6 +24,8 @@ The trials list is a list of objects, and the objects look like:
 {
 	selectedSounds: [list of strings]
 	actualSounds: [list of strings]
+	startTime: time in ms
+	endTime: time in MS
 }
 */
 
@@ -51,7 +53,8 @@ export default class SoundTrial extends Component {
 			numberOfSounds: this.props.minSounds,
 			played: false,
 			trials: [],
-			selectedSounds: {}
+			selectedSounds: {},
+			startTime: null,
 		}
 		this.sounds = getAllSounds([this.props.soundScape])
 		this.sound_list = this.props.soundOptions || Object.keys(this.sounds)
@@ -66,7 +69,9 @@ export default class SoundTrial extends Component {
 		const currentSounds = getAllSounds(["visitedSounds"])
 		const actualSounds = Object.keys(currentSounds).sort()
 		const selectedSounds = Object.values(this.state.selectedSounds).sort()
-		this.setState({trials: [...this.state.trials, {actualSounds, selectedSounds}]})
+		const endTime = new Date().getTime()
+		const startTime = this.state.startTime
+		this.setState({trials: [...this.state.trials, {actualSounds, selectedSounds, startTime, endTime}], startTime: null})
 		stopSounds()
 		this.props.onNext(currentSounds, this.state)
 		if(this.state.numberOfSounds >= this.maxSounds){
@@ -83,7 +88,7 @@ export default class SoundTrial extends Component {
 	startTrial(){
 		checkNumSounds(this.state.numberOfSounds, this.props.condition, this.props.soundScape)
 		this.props.onPlay()
-		this.setState({played: true})
+		this.setState({played: true, startTime: new Date().getTime()})
 		if(this.props.trialLength){
 			setTimeout(stopSounds, this.props.trialLength)
 		}
