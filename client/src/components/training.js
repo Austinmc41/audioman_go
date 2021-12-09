@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { NavLink } from 'react-router-dom'
 import Question   from './Question'
 import { getAllSounds, refreshSoundScape, checkNumSounds, stopSounds } from './panWads'
 import _ from 'lodash'
@@ -53,10 +54,16 @@ export default class Training extends Component {
 	constructor(props){
 		super(props)
 		this.state = {
-			condition: "monaural"
+			condition: "monaural",
+			complete: false
 		}
 		this.startTrial = this.startTrial.bind(this)
 		this.handleNext = this.handleNext.bind(this)
+		this.handleComplete = this.handleComplete.bind(this)
+	}
+
+	handleComplete(){
+		this.setState({complete:true})
 	}
 
 	handleNext(currentSounds, stateObj){
@@ -83,12 +90,14 @@ export default class Training extends Component {
 			<p>One set of trials will be using the panning condition, and the other will be using the monaural condition. You should practice with both.</p>
 			<Question handleChange={(e, value)=>this.setState({condition:value})} type="radio" label="Condition" choices={["monaural", "pan"]} />
 
-			<SoundTrial soundScape="training" condition={this.state.condition} onNext={this.handleNext} />
+			<SoundTrial soundScape="training" condition={this.state.condition} onNext={this.handleNext} onComplete={this.handleComplete} />
 
 			{/*
 			<h3>Story Questions</h3>
 			{questions}
 			*/}
+			
+			{this.state.complete ? <NavLink  to={this.props.nextPage}>Finish Training</NavLink> : null}
 			</div>
 		)
 	}

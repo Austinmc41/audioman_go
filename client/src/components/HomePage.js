@@ -51,7 +51,7 @@ class HomePage extends Component {
                     <br></br>
                 </div>
                 <div className="container" style={{marginLeft: "65%"}}>
-                    <NavLink exact activeClassName="active" to={ROUTES.PAGE3}>
+                    <NavLink exact activeClassName="active" to={this.props.nextPage}>
                         <FontAwesomeIcon onClick={this.handleClick} icon={faLongArrowAltRight} size="4x"/>
                         Next
                     </NavLink>

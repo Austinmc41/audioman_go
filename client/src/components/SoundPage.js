@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Question   from './Question'
 import { getSoundNames } from './panWads'
 import _ from 'lodash'
+import { Navigate } from 'react-router-dom'
 
 import SoundTrial from './soundTrial'
 
@@ -14,6 +15,7 @@ export default class Training extends Component {
 			increment: 2,
 			maxSounds: 20,
 			trialLength: 60000,
+			done: false,
 		}
 		this.soundNames = getSoundNames()
 		this.startTrial = this.startTrial.bind(this)
@@ -26,13 +28,14 @@ export default class Training extends Component {
 	}
 
 	handleComplete(state){
-		alert("you are done")
 		console.log(state.trials)
+		this.setState({done:true})
 	}
 
 	render(){
 		return(
 			<div>
+			{this.state.done ? <Navigate to={this.nextPage} /> : null}
 			<h1>Trial</h1>
 			<SoundTrial trialLength={this.state.trialLength} maxSounds={this.state.maxSounds} increment={this.state.increment} soundScape={this.state.soundScape} condition={this.state.condition} onNext={this.handleNext} onComplete={this.handleComplete} allowReset={false} soundOptions={this.soundNames} />
 			</div>
