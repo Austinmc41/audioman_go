@@ -24,18 +24,20 @@ import passageJSON from './passages.json'
 
 
 class App extends React.Component {
-  constructor(){
-		super();
+  constructor(props){
+		super(props);
+		const id = uuidv4()
 		this.state = {
-      data: passageJSON.passages,
-      id: uuidv4(),
+      passages: passageJSON.passages,
+      id: id,
       condition: "pan",
       soundScape: "soundscape" + _.random(1,2),
-      data: {}, // this is data like: "trial1": {"trials": [...]}
+      data: {id}, // this is data like: "trial1": {"trials": [...]}
     }
     this.speechContext = new Speech()
     this.passedProps = {
-      spk: this.speechContext.speak
+      spk: this.speechContext.speak,
+      id: this.state.id
     }
     this.handleConditionChange = this.handleConditionChange.bind(this)
     this.handleDataChange = this.handleDataChange.bind(this)
@@ -52,7 +54,7 @@ class App extends React.Component {
   function
 
   render() {
-    if (!this.state.data) return "Loading...";
+    if (!this.state.passages) return "Loading...";
 
     var i = 1;
     return (
@@ -66,16 +68,16 @@ class App extends React.Component {
             <Route exact path="/trial1" element={<SoundPage nextPage="/nasaTLX1" condition={this.state.condition} soundScape={this.state.soundScape} trialNum={1} handleDataChange={this.handleDataChange} {...this.passedProps} />} />
             <Route exact path="/trial2" element={<SoundPage nextPage="/nasaTLX2" condition={this.state.condition === "pan" ? "monaural" : "pan"} soundScape={this.state.soundScape === "soundscape1" ? "soundscape2" : "soundscape1"} trialNum={1} handleDataChange={this.handleDataChange} {...this.passedProps} />} />
             <Route exact path="/training" element={<Training nextPage="/learning_sounds" handleDataChange={this.handleDataChange} {...this.passedProps} />}/>
-            <Route exact path="/nasaTLX1" element={<NasaTLXForm nextPage="/trial2" handleDataChange={this.handleDataChange} {...this.passedProps} />}/>
-            <Route exact path="/nasaTLX2" element={<NasaTLXForm nextPage="/finalPage" handleDataChange={this.handleDataChange} {...this.passedProps} />}/>
-            <Route exact path="/finalPage" element={<FinalPage {...this.passedProps} />}/>
+            <Route exact path="/nasaTLX1" element={<NasaTLXForm nextPage="/trial2" trialNum={1} handleDataChange={this.handleDataChange} {...this.passedProps} />}/>
+            <Route exact path="/nasaTLX2" element={<NasaTLXForm nextPage="/finalPage" trialNum={2} handleDataChange={this.handleDataChange} {...this.passedProps} />}/>
+            <Route exact path="/finalPage" element={<FinalPage data={this.state.data} {...this.passedProps} />}/>
 
 {/*
             {Object.entries(nextPages).map(([key, value]) => {
               return (key === "/page11") || (key === "/page19") ?
-                <Route key={key} exact path={key} element={<NasaTLXForm idProp={this.state.id} nextPage={value} data={this.state.data[i++]}/>} {...this.passedProps} /> 
+                <Route key={key} exact path={key} element={<NasaTLXForm idProp={this.state.id} nextPage={value} data={this.state.passages[i++]}/>} {...this.passedProps} /> 
                 :
-                <Route key={key} exact path={key} element={<SoundPage idProp={this.state.id} nextPage={value} data={this.state.data[i++]}/>} {...this.passedProps} />
+                <Route key={key} exact path={key} element={<SoundPage idProp={this.state.id} nextPage={value} data={this.state.passages[i++]}/>} {...this.passedProps} />
             })}
 */}
           </Routes>

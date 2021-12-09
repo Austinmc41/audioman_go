@@ -40,6 +40,8 @@ class NasaTLXForm extends Component {
             result["page" + page + "_" + categories[j]["attribute"]] = $("#" + categories[j]["attribute"]).children()[1].value;
         }
 
+        this.props.handleDataChange(`nasaTLX${this.props.trialNum}`, result)
+
         if (page === 1) {
             result["_id"] = this.props.idProp;
             axios
@@ -82,8 +84,8 @@ class NasaTLXForm extends Component {
                 ))}
                 <div className="container" style={{marginLeft: "30%"}}>
                     {(this.props.nextPage) &&
-                        <NavLink exact activeClassName="active" to={this.props.nextPage}>
-                            <FontAwesomeIcon onClick={this.handleClick} icon={faLongArrowAltRight} size="4x"/>
+                        <NavLink exact activeClassName="active" to={this.props.nextPage} onClick={this.handleClick  }>
+                            <FontAwesomeIcon icon={faLongArrowAltRight} size="4x"/>
                             Continue
                         </NavLink>
                     }
