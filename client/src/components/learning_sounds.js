@@ -13,7 +13,8 @@ export default class LearningSounds extends Component {
 			currentOption: this.soundNames[0],
 			currentSound: this.sounds[this.soundNames[0]],
 			playing: false,
-			finished: false
+			finished: false,
+			startTime: null,
 		}
 
 		this.options = this.soundNames.map(sound=>(
@@ -24,11 +25,18 @@ export default class LearningSounds extends Component {
 		this.handleFinished = this.handleFinished.bind(this)
 	}
 
+	componentDidMount(){
+		this.setState({startTime: new Date().getTime()})
+	}
+
 	handleFinished(){
 		this.state.currentSound.stop()
 		const done = window.confirm("Are you sure you would like to continue past the learning stage")
 		if(done){
-			this.setState({finished:true})
+			const endTime = new Date().getTime()
+			const startTime = this.state.startTime
+			this.props.handleDataChange("learning_sounds", {startTime, endTime})
+			this.setState({finished:true, startTime:null})
 		}
 	}
 

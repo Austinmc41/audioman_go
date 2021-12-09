@@ -55,14 +55,22 @@ export default class Training extends Component {
 		super(props)
 		this.state = {
 			condition: "monaural",
-			complete: false
+			complete: false,
+			startTime: null,
 		}
 		this.startTrial = this.startTrial.bind(this)
 		this.handleNext = this.handleNext.bind(this)
 		this.handleComplete = this.handleComplete.bind(this)
 	}
 
+	componentDidMount(){
+		this.setState({startTime: new Date().getTime()})
+	}
+
 	handleComplete(){
+		const endTime = new Date().getTime()
+		const startTime = this.state.startTime
+		this.props.handleDataChange("training", {startTime, endTime})
 		this.setState({complete:true})
 	}
 
@@ -90,7 +98,7 @@ export default class Training extends Component {
 			<p>One set of trials will be using the panning condition, and the other will be using the monaural condition. You should practice with both.</p>
 			<Question handleChange={(e, value)=>this.setState({condition:value})} type="radio" label="Condition" choices={["monaural", "pan"]} />
 
-			<SoundTrial soundScape="training" condition={this.state.condition} onNext={this.handleNext} onComplete={this.handleComplete} />
+			<SoundTrial soundScape="training" condition={this.state.condition} onNext={this.handleNext} onComplete={this.handleComplete}  />
 
 			{/*
 			<h3>Story Questions</h3>
