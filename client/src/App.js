@@ -16,6 +16,7 @@ import LearningSounds from './components/learning_sounds'
 import Controll from './components/controllCondition'
 import SoundPage from "./components/SoundPage";
 import NasaTLXForm from './components/NasaTLXForm';
+import Feedback from './components/Feedback'
 import FinalPage from './components/finalPage';
 
 import Speech from './speech'
@@ -69,7 +70,8 @@ class App extends React.Component {
             <Route exact path="/trial2" element={<SoundPage nextPage="/nasaTLX2" condition={this.state.condition === "pan" ? "monaural" : "pan"} soundScape={this.state.soundScape === "soundscape1" ? "soundscape2" : "soundscape1"} trialNum={2} handleDataChange={this.handleDataChange} {...this.passedProps} />} />
             <Route exact path="/training" element={<Training nextPage="/learning_sounds" handleDataChange={this.handleDataChange} {...this.passedProps} />}/>
             <Route exact path="/nasaTLX1" element={<NasaTLXForm nextPage="/trial2" trialNum={1} handleDataChange={this.handleDataChange} {...this.passedProps} />}/>
-            <Route exact path="/nasaTLX2" element={<NasaTLXForm nextPage="/finalPage" trialNum={2} handleDataChange={this.handleDataChange} {...this.passedProps} />}/>
+            <Route exact path="/nasaTLX2" element={<NasaTLXForm nextPage="/feedback" trialNum={2} handleDataChange={this.handleDataChange} {...this.passedProps} />}/>
+            <Route exact path="/feedback" element={<Feedback nextPage="/finalPage" handleDataChange={this.handleDataChange} {...this.passedProps} />}/>
             <Route exact path="/finalPage" element={<FinalPage data={this.state.data} {...this.passedProps} />}/>
 
 {/*
