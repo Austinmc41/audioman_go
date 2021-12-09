@@ -33,11 +33,10 @@ class NasaTLXForm extends Component {
 	}
 
     handleClick = (e) => {
-        var page = this.props.nextPage.substring(5) - 3;
 
         var result = {};
         for (var j = 0; j < categories.length; j++) {
-            result["page" + page + "_" + categories[j]["attribute"]] = $("#" + categories[j]["attribute"]).children()[1].value;
+            result["NasaTLX" + this.props.trialNum + "_" + categories[j]["attribute"]] = $("#" + categories[j]["attribute"]).children()[1].value;
         }
 
         this.props.handleDataChange(`nasaTLX${this.props.trialNum}`, result)

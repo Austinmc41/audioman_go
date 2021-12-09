@@ -44,7 +44,7 @@ class App extends React.Component {
   }
 
 	handleDataChange(trial, data){
-		this.setState({data: Object.assign({}, this.state.data, {trial: data})})
+		this.setState({data: Object.assign({}, this.state.data, {[trial]: data})})
 	}
 
 	handleConditionChange(value){
@@ -62,11 +62,11 @@ class App extends React.Component {
         <div className="App">
           <Routes>
             <Route exact path={ROUTES.PAGE1} element={<Consent nextPage="/demographics" {...this.passedProps} handleConditionChange={this.handleConditionChange} />}/>
-            <Route exact path={ROUTES.PAGE2} element={<HomePage nextPage="/training" idProp={this.state.id} {...this.passedProps} />}/>
+            <Route exact path={ROUTES.PAGE2} element={<HomePage nextPage="/training" idProp={this.state.id} handleDataChange={this.handleDataChange} {...this.passedProps} />}/>
             <Route exact path="/learning_sounds" element={<LearningSounds nextPage="/trial1" handleDataChange={this.handleDataChange} {...this.passedProps} />} />
             <Route exact path="/controll" element={<Controll />} {...this.passedProps} />
             <Route exact path="/trial1" element={<SoundPage nextPage="/nasaTLX1" condition={this.state.condition} soundScape={this.state.soundScape} trialNum={1} handleDataChange={this.handleDataChange} {...this.passedProps} />} />
-            <Route exact path="/trial2" element={<SoundPage nextPage="/nasaTLX2" condition={this.state.condition === "pan" ? "monaural" : "pan"} soundScape={this.state.soundScape === "soundscape1" ? "soundscape2" : "soundscape1"} trialNum={1} handleDataChange={this.handleDataChange} {...this.passedProps} />} />
+            <Route exact path="/trial2" element={<SoundPage nextPage="/nasaTLX2" condition={this.state.condition === "pan" ? "monaural" : "pan"} soundScape={this.state.soundScape === "soundscape1" ? "soundscape2" : "soundscape1"} trialNum={2} handleDataChange={this.handleDataChange} {...this.passedProps} />} />
             <Route exact path="/training" element={<Training nextPage="/learning_sounds" handleDataChange={this.handleDataChange} {...this.passedProps} />}/>
             <Route exact path="/nasaTLX1" element={<NasaTLXForm nextPage="/trial2" trialNum={1} handleDataChange={this.handleDataChange} {...this.passedProps} />}/>
             <Route exact path="/nasaTLX2" element={<NasaTLXForm nextPage="/finalPage" trialNum={2} handleDataChange={this.handleDataChange} {...this.passedProps} />}/>

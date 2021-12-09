@@ -14,10 +14,10 @@ export default class Training extends Component {
 			soundScape: this.props.soundScape,
 			increment: 2,
 			maxSounds: 19,
-			trialLength: 60000,
+			trialLength: null,
 			done: false,
 		}
-		this.soundNames = getSoundNames()
+		this.soundNames = _.shuffle(getSoundNames())
 		this.startTrial = this.startTrial.bind(this)
 		this.handleComplete = this.handleComplete.bind(this)
 	}
@@ -41,7 +41,7 @@ export default class Training extends Component {
 		return(
 			<div>
 			{this.state.done ? <Navigate to={this.props.nextPage} /> : null}
-			<h1>Trial</h1>
+			<h1>Condition {this.props.trialNum}</h1>
 			<SoundTrial trialLength={this.state.trialLength} maxSounds={this.state.maxSounds} increment={this.state.increment} onPlay={this.startTrial} soundScape={this.state.soundScape} condition={this.state.condition} onComplete={this.handleComplete} allowReset={false} soundOptions={this.soundNames} />
 			</div>
 		)

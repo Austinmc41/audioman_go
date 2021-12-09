@@ -37,6 +37,7 @@ class HomePage extends Component {
         result["hearing_level"] = userAnswers[5];
 
         result["_id"] = this.props.idProp;
+        this.props.handleDataChange("demographics", result)
         axios
             .post("http://localhost:5000/record/add", result)
             .then((res) => console.log(res.data));
@@ -51,8 +52,8 @@ class HomePage extends Component {
                     <br></br>
                 </div>
                 <div className="container" style={{marginLeft: "65%"}}>
-                    <NavLink exact activeClassName="active" to={this.props.nextPage}>
-                        <FontAwesomeIcon onClick={this.handleClick} icon={faLongArrowAltRight} size="4x"/>
+                    <NavLink exact activeClassName="active" to={this.props.nextPage} onClick={this.handleClick}>
+                        <FontAwesomeIcon icon={faLongArrowAltRight} size="4x"/>
                         Next
                     </NavLink>
                 </div>
