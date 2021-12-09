@@ -58,7 +58,7 @@ class NasaTLXForm extends Component {
                 {categories.map((item, index) => (
                     <div>
                         <div>
-                            <label>{item["label"]}</label>
+                            <label htmlFor={item["attribute"]}>{item["label"]}</label>
                         </div>
                         <div id={item["attribute"]}>
                             <ReactBootstrapSlider
@@ -84,6 +84,7 @@ class NasaTLXForm extends Component {
                     {(this.props.nextPage) &&
                         <NavLink exact activeClassName="active" to={this.props.nextPage}>
                             <FontAwesomeIcon onClick={this.handleClick} icon={faLongArrowAltRight} size="4x"/>
+                            Continue
                         </NavLink>
                     }
                 </div>
