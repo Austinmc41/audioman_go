@@ -66,17 +66,18 @@ export default class SoundTrial extends Component {
 	}
 
 	getAccuracy(correct, answers){
-		const correctAnswers = _.differenceWith(correct, answers, _.isEqual)
-		const answerAccuracy = correctAnswers.length / correct.llength
-		const howManyAccurate = Math.abs(correct.length - answers.length) / correct.length
+		const correctAnswers = _.intersectionWith(correct, answers, _.isEqual)
+		const answerAccuracy = correctAnswers.length / correct.length
+		const howManyAccurate = answers.length ? Math.abs(correct.length - answers.length) / correct.length || 1 : 0
 		const accuracy = howManyAccurate * answerAccuracy
+		console.log(accuracy)
 		return accuracy
 	}
 
 	handleNext(){
 		const currentSounds = getAllSounds(["visitedSounds"])
-		const actualSounds = Object.keys(currentSounds).sort()
-		const selectedSounds = Object.values(this.state.selectedSounds).sort()
+		const actualSounds = _.uniq(Object.keys(currentSounds)).sort().filter(i=>i!=="---")
+		const selectedSounds = _.uniq(Object.values(this.state.selectedSounds)).sort().filter(i=>i!=="---")
 		const accuracy = this.getAccuracy(actualSounds, selectedSounds)
 		const endTime = new Date().getTime()
 		const startTime = this.state.startTime
