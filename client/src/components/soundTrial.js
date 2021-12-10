@@ -65,13 +65,22 @@ export default class SoundTrial extends Component {
 		this.handleSoundChange = this.handleSoundChange.bind(this)
 	}
 
+	getAccuracy(correct, answers){
+		const correctAnswers = _.differenceWith(correct, answers, _.isEqual)
+		const answerAccuracy = correctAnswers.length / correct.llength
+		const howManyAccurate = Math.abs(correct.length - answers.length) / correct.length
+		const accuracy = howManyAccurate * answerAccuracy
+		return accuracy
+	}
+
 	handleNext(){
 		const currentSounds = getAllSounds(["visitedSounds"])
 		const actualSounds = Object.keys(currentSounds).sort()
 		const selectedSounds = Object.values(this.state.selectedSounds).sort()
+		const accuracy = this.getAccuracy(actualSounds, selectedSounds)
 		const endTime = new Date().getTime()
 		const startTime = this.state.startTime
-		this.setState({trials: [...this.state.trials, {actualSounds, selectedSounds, startTime, endTime}], startTime: null})
+		this.setState({trials: [...this.state.trials, {actualSounds, selectedSounds, startTime, endTime, accuracy}], startTime: null})
 		stopSounds()
 		this.props.onNext(currentSounds, this.state)
 		if(this.state.numberOfSounds >= this.maxSounds){
