@@ -197,12 +197,12 @@
        ]
     },
     "nasaTLX1":{
-       "NasaTLX1_mental":27,
-       "NasaTLX1_physical":0,
-       "NasaTLX1_temporal":26,
-       "NasaTLX1_performance":50,
-       "NasaTLX1_effort":50,
-       "NasaTLX1_frustration":50
+       "mental":27,
+       "physical":0,
+       "temporal":26,
+       "performance":50,
+       "effort":50,
+       "frustration":50
     },
     "trial2":{
        "trialNum":2,
@@ -379,12 +379,12 @@
        ]
     },
     "nasaTLX2":{
-       "NasaTLX2_mental":24,
-       "NasaTLX2_physical":18,
-       "NasaTLX2_temporal":25,
-       "NasaTLX2_performance":50,
-       "NasaTLX2_effort":50,
-       "NasaTLX2_frustration":50
+       "mental":24,
+       "physical":18,
+       "temporal":25,
+       "performance":50,
+       "effort":50,
+       "frustration":50
     },
     "feedback":""
  }

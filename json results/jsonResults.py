@@ -74,15 +74,15 @@ for filename in filenames:
       else:
         rowData.append('empty') 
 
-    NasaTLXPan = json_object["NasaTLXPan"] if json_object["trial1"]["condition"] == "pan" else json_object["NasaTLXMonaural"]
-    NasaTLXMonaural = json_object["NasaTLXPan"] if json_object["trial1"]["condition"] == "monaural" else json_object["NasaTLXMonaural"]
+    NasaTLXPan = json_object["nasaTLX1"] if json_object["trial1"]["condition"] == "pan" else json_object["nasaTLX2"]
+    NasaTLXMonaural = json_object["nasaTLX1"] if json_object["trial1"]["condition"] == "monaural" else json_object["nasaTLX2"]
 
-    rowData.append(NasaTLXPan['NasaTLXPan_mental'])
-    rowData.append(NasaTLXPan['NasaTLXPan_physical'])
-    rowData.append(NasaTLXPan['NasaTLXPan_temporal'])
-    rowData.append(NasaTLXPan['NasaTLXPan_performance'])
-    rowData.append(NasaTLXPan['NasaTLXPan_effort'])
-    rowData.append(NasaTLXPan['NasaTLXPan_frustration'])
+    rowData.append(NasaTLXPan['mental'])
+    rowData.append(NasaTLXPan['physical'])
+    rowData.append(NasaTLXPan['temporal'])
+    rowData.append(NasaTLXPan['performance'])
+    rowData.append(NasaTLXPan['effort'])
+    rowData.append(NasaTLXPan['frustration'])
     
 
     for i in range(8):
@@ -96,12 +96,12 @@ for filename in filenames:
       else:
         rowData.append('empty')
 
-    rowData.append(NasaTLXMonaural['NasaTLXMonaural_mental'])
-    rowData.append(NasaTLXMonaural['NasaTLXMonaural_physical'])
-    rowData.append(NasaTLXMonaural['NasaTLXMonaural_temporal'])
-    rowData.append(NasaTLXMonaural['NasaTLXMonaural_performance'])
-    rowData.append(NasaTLXMonaural['NasaTLXMonaural_effort'])
-    rowData.append(NasaTLXMonaural['NasaTLXMonaural_frustration'])
+    rowData.append(NasaTLXMonaural['mental'])
+    rowData.append(NasaTLXMonaural['physical'])
+    rowData.append(NasaTLXMonaural['temporal'])
+    rowData.append(NasaTLXMonaural['performance'])
+    rowData.append(NasaTLXMonaural['effort'])
+    rowData.append(NasaTLXMonaural['frustration'])
 
     demographics = json_object["demographics"]
     rowData.append(demographics['age'])
