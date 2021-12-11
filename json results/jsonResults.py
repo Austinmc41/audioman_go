@@ -7,27 +7,38 @@ FOLDER_NAME = "./study_results/"
 header = ['id']
 data = []
 
+def getAccuracy(correct, answers):
+  correctSet = set(correct)
+  correctAnswers = correctSet.intersection(answers)
+  answerAccuracy = len(correctAnswers) / len(correct)
+  howManyAccurate = 0
+  if len(answers):
+    h = abs(len(correct) - len(answers)) / len(correct)
+    howManyAccurate = h if h else 1
+  accuracy = howManyAccurate * answerAccuracy
+  return accuracy
+
 for i in range(8):
-  trialName = 'trial1-' + str(i + 1)
+  trialName = 'trialPan-' + str(i + 1)
   header.append(trialName)
 
-header.append('NasaTLX1_mental')
-header.append('NasaTLX1_physical')
-header.append('NasaTLX1_temporal')
-header.append('NasaTLX1_performance')
-header.append('NasaTLX1_effort')
-header.append('NasaTLX1_frustration')
+header.append('NasaTLXPan_mental')
+header.append('NasaTLXPan_physical')
+header.append('NasaTLXPan_temporal')
+header.append('NasaTLXPan_performance')
+header.append('NasaTLXPan_effort')
+header.append('NasaTLXPan_frustration')
 
 for i in range(8):
-  trialName = 'trial2-' + str(i + 1)
+  trialName = 'trialMonaural-' + str(i + 1)
   header.append(trialName)
 
-header.append('NasaTLX2_mental')
-header.append('NasaTLX2_physical')
-header.append('NasaTLX2_temporal')
-header.append('NasaTLX2_performance')
-header.append('NasaTLX2_effort')
-header.append('NasaTLX2_frustration')
+header.append('NasaTLXMonaural_mental')
+header.append('NasaTLXMonaural_physical')
+header.append('NasaTLXMonaural_temporal')
+header.append('NasaTLXMonaural_performance')
+header.append('NasaTLXMonaural_effort')
+header.append('NasaTLXMonaural_frustration')
 header.append('Age')
 header.append('Gender')
 header.append('Nationality')
@@ -39,6 +50,8 @@ filenames = os.listdir(FOLDER_NAME)
 for filename in filenames:
     rowData = []
     filename = os.path.join(FOLDER_NAME, filename)
+    if not filename.endswith("json"):
+      continue
     json_object = json.load(
         open(
             filename,
@@ -47,38 +60,48 @@ for filename in filenames:
     )
 
     rowData.append(json_object['id'])
-    trial1 = json_object["trial1"]["trials"]
-    trial2 = json_object["trial2"]["trials"]
+    trial1 = json_object["trial1"]["trials"] if json_object["trial1"]["condition"] == "pan" else json_object["trial2"]["trials"]
+    trial2 = json_object["trial1"]["trials"] if json_object["trial1"]["condition"] == "monaural" else json_object["trial2"]["trials"]
 
     for i in range(8):
       if (i < len(trial1)):
-        rowData.append(trial1[i]['accuracy'])
+        try:
+          rowData.append(trial1[i]['accuracy'])
+        except KeyError:
+          correct = trial1[i]['actualSounds']
+          answers = trial1[i]['selectedSounds']
+          rowData.append(getAccuracy(correct, answers))
       else:
         rowData.append('empty') 
 
-    nasaTlx1 = json_object["nasaTLX1"]
-    nasaTlx2 = json_object["nasaTLX2"]
+    NasaTLXPan = json_object["NasaTLXPan"] if json_object["trial1"]["condition"] == "pan" else json_object["NasaTLXMonaural"]
+    NasaTLXMonaural = json_object["NasaTLXPan"] if json_object["trial1"]["condition"] == "monaural" else json_object["NasaTLXMonaural"]
 
-    rowData.append(nasaTlx1['NasaTLX1_mental'])
-    rowData.append(nasaTlx1['NasaTLX1_physical'])
-    rowData.append(nasaTlx1['NasaTLX1_temporal'])
-    rowData.append(nasaTlx1['NasaTLX1_performance'])
-    rowData.append(nasaTlx1['NasaTLX1_effort'])
-    rowData.append(nasaTlx1['NasaTLX1_frustration'])
+    rowData.append(NasaTLXPan['NasaTLXPan_mental'])
+    rowData.append(NasaTLXPan['NasaTLXPan_physical'])
+    rowData.append(NasaTLXPan['NasaTLXPan_temporal'])
+    rowData.append(NasaTLXPan['NasaTLXPan_performance'])
+    rowData.append(NasaTLXPan['NasaTLXPan_effort'])
+    rowData.append(NasaTLXPan['NasaTLXPan_frustration'])
     
 
     for i in range(8):
       if (i < len(trial2)):
-        rowData.append(trial2[i]['accuracy'])
+        try:
+          rowData.append(trial2[i]['accuracy'])
+        except KeyError:
+          correct = trial1[i]['actualSounds']
+          answers = trial1[i]['selectedSounds']
+          rowData.append(getAccuracy(correct, answers))
       else:
         rowData.append('empty')
 
-    rowData.append(nasaTlx2['NasaTLX2_mental'])
-    rowData.append(nasaTlx2['NasaTLX2_physical'])
-    rowData.append(nasaTlx2['NasaTLX2_temporal'])
-    rowData.append(nasaTlx2['NasaTLX2_performance'])
-    rowData.append(nasaTlx2['NasaTLX2_effort'])
-    rowData.append(nasaTlx2['NasaTLX2_frustration'])
+    rowData.append(NasaTLXMonaural['NasaTLXMonaural_mental'])
+    rowData.append(NasaTLXMonaural['NasaTLXMonaural_physical'])
+    rowData.append(NasaTLXMonaural['NasaTLXMonaural_temporal'])
+    rowData.append(NasaTLXMonaural['NasaTLXMonaural_performance'])
+    rowData.append(NasaTLXMonaural['NasaTLXMonaural_effort'])
+    rowData.append(NasaTLXMonaural['NasaTLXMonaural_frustration'])
 
     demographics = json_object["demographics"]
     rowData.append(demographics['age'])
@@ -99,3 +122,5 @@ with open('countries.csv', 'w', encoding='UTF8') as f:
     # write the data
     for i in range(len(data)):
       writer.writerow(data[i])
+
+print("done")

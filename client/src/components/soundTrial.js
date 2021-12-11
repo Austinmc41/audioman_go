@@ -70,7 +70,6 @@ export default class SoundTrial extends Component {
 		const answerAccuracy = correctAnswers.length / correct.length
 		const howManyAccurate = answers.length ? Math.abs(correct.length - answers.length) / correct.length || 1 : 0
 		const accuracy = howManyAccurate * answerAccuracy
-		console.log(accuracy)
 		return accuracy
 	}
 
