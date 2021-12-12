@@ -4,7 +4,7 @@ import csv
 
 FOLDER_NAME = "./study_results/"
 
-header = ['id', 'section', 'condition', 'trial', 'value', 'Sound Scape', 'Trial Number']
+header = ['id', 'section', 'condition', 'trial', 'value', 'answer', 'Sound Scape', 'Trial Number']
 data = []
 
 def getAccuracy(correct, answers):
@@ -42,7 +42,7 @@ for filename in filenames:
           data.append({
             "section": "demographics",
             "trial": question,
-            "value": json_object[section][question],
+            "answer": json_object[section][question],
             "id": id
           })
       elif section in ["trial1", "trial2"]:
