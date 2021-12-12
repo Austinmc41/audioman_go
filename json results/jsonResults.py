@@ -4,7 +4,7 @@ import csv
 
 FOLDER_NAME = "./study_results/"
 
-header = ['id']
+header = ['id', 'section', 'condition', 'trial', 'value', 'Sound Scape', 'Trial Number']
 data = []
 
 def getAccuracy(correct, answers):
@@ -18,37 +18,8 @@ def getAccuracy(correct, answers):
   accuracy = howManyAccurate * answerAccuracy
   return accuracy
 
-for i in range(8):
-  trialName = 'trialPan-' + str(i + 1)
-  header.append(trialName)
-
-header.append('NasaTLXPan_mental')
-header.append('NasaTLXPan_physical')
-header.append('NasaTLXPan_temporal')
-header.append('NasaTLXPan_performance')
-header.append('NasaTLXPan_effort')
-header.append('NasaTLXPan_frustration')
-
-for i in range(8):
-  trialName = 'trialMonaural-' + str(i + 1)
-  header.append(trialName)
-
-header.append('NasaTLXMonaural_mental')
-header.append('NasaTLXMonaural_physical')
-header.append('NasaTLXMonaural_temporal')
-header.append('NasaTLXMonaural_performance')
-header.append('NasaTLXMonaural_effort')
-header.append('NasaTLXMonaural_frustration')
-header.append('Age')
-header.append('Gender')
-header.append('Nationality')
-header.append('musical_ability')
-header.append('anxiety_level')
-header.append('hearing_level')
-
 filenames = os.listdir(FOLDER_NAME)
 for filename in filenames:
-    rowData = []
     filename = os.path.join(FOLDER_NAME, filename)
     if not filename.endswith("json"):
       continue
@@ -59,68 +30,75 @@ for filename in filenames:
         )
     )
 
-    rowData.append(json_object['id'])
-    trial1 = json_object["trial1"]["trials"] if json_object["trial1"]["condition"] == "pan" else json_object["trial2"]["trials"]
-    trial2 = json_object["trial1"]["trials"] if json_object["trial1"]["condition"] == "monaural" else json_object["trial2"]["trials"]
-
-    for i in range(8):
-      if (i < len(trial1)):
-        try:
-          rowData.append(trial1[i]['accuracy'])
-        except KeyError:
-          correct = trial1[i]['actualSounds']
-          answers = trial1[i]['selectedSounds']
-          rowData.append(getAccuracy(correct, answers))
-      else:
-        rowData.append('empty') 
-
-    NasaTLXPan = json_object["nasaTLX1"] if json_object["trial1"]["condition"] == "pan" else json_object["nasaTLX2"]
-    NasaTLXMonaural = json_object["nasaTLX1"] if json_object["trial1"]["condition"] == "monaural" else json_object["nasaTLX2"]
-
-    rowData.append(NasaTLXPan['mental'])
-    rowData.append(NasaTLXPan['physical'])
-    rowData.append(NasaTLXPan['temporal'])
-    rowData.append(NasaTLXPan['performance'])
-    rowData.append(NasaTLXPan['effort'])
-    rowData.append(NasaTLXPan['frustration'])
+    id = json_object['id']
     
+    for section in json_object:
+      if section in ['id']:
+        continue
+      elif section == "demographics":
+        for question in json_object[section]:
+          if question == "_id":
+            continue
+          data.append({
+            "section": "demographics",
+            "trial": question,
+            "value": json_object[section][question],
+            "id": id
+          })
+      elif section in ["trial1", "trial2"]:
+        condition = json_object[section]["condition"]
+        soundScape = json_object[section]["soundScape"]
+        trialNum = json_object[section]["trialNum"]
+        for trial in json_object[section]['trials']:
+          correct = trial['actualSounds']
 
-    for i in range(8):
-      if (i < len(trial2)):
-        try:
-          rowData.append(trial2[i]['accuracy'])
-        except KeyError:
-          correct = trial1[i]['actualSounds']
-          answers = trial1[i]['selectedSounds']
-          rowData.append(getAccuracy(correct, answers))
-      else:
-        rowData.append('empty')
+          try:
+            accuracy = trial['accuracy']
+          except KeyError:
+            answers = trial['selectedSounds']
+            accuracy = getAccuracy(correct, answers)
 
-    rowData.append(NasaTLXMonaural['mental'])
-    rowData.append(NasaTLXMonaural['physical'])
-    rowData.append(NasaTLXMonaural['temporal'])
-    rowData.append(NasaTLXMonaural['performance'])
-    rowData.append(NasaTLXMonaural['effort'])
-    rowData.append(NasaTLXMonaural['frustration'])
+          data.append({
+            "section": "trial",
+            "id": id,
+            "condition": condition,
+            "Trial Number": trialNum,
+            "Sound Scape": soundScape,
+            "value": accuracy,
+            "trial": len(correct)
+          })
+      elif section == "nasaTLX1":
+        condition = json_object["trial1"]["condition"]
+        soundScape = json_object["trial1"]["soundScape"]
+        for category in json_object[section]:
+          data.append({
+            "id": id,
+            "section": "NasaTLX",
+            "condition": condition,
+            "Sound Scape": soundScape,
+            "trial": category,
+            "value": json_object[section][category]
+          })
 
-    demographics = json_object["demographics"]
-    rowData.append(demographics['age'])
-    rowData.append(demographics['gender'])
-    rowData.append(demographics['nationality'])
-    rowData.append(demographics['musical_ability'])
-    rowData.append(demographics['anxiety_level'])
-    rowData.append(demographics['hearing_level'])
+      elif section == "nasaTLX2":
+        condition = json_object["trial2"]["condition"]
+        soundScape = json_object["trial2"]["soundScape"]
+        for category in json_object[section]:
+          data.append({
+            "id": id,
+            "section": "NasaTLX",
+            "condition": condition,
+            "Sound Scape": soundScape,
+            "trial": category,
+            "value": json_object[section][category]
+          })
 
-    data.append(rowData)
+with open('results.csv', 'w', encoding='UTF8', newline='') as f:
+    writer = csv.DictWriter(f, fieldnames=header)
 
-with open('countries.csv', 'w', encoding='UTF8') as f:
-    writer = csv.writer(f)
-
-    # write the header
-    writer.writerow(header)
-
+    # Write the header
+    writer.writeheader()
     # write the data
-    for i in range(len(data)):
-      writer.writerow(data[i])
+    writer.writerows(data)
 
 print("done")
